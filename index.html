@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#fff4d7">
+  <title>A little birthday thank you</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&family=Outfit:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="page" aria-label="Birthday thank you">
+    <div class="confetti" aria-hidden="true"></div>
+    <section class="birthday" aria-label="A birthday thank you message">
+      <div class="video-card">
+        <div class="video-badge">birthday video for u <span aria-hidden="true">🎂</span></div>
+        <svg class="cat-scene" viewBox="0 0 360 520" role="img" aria-label="A white cat and a gray cat leaning in for a kiss">
+          <defs>
+            <radialGradient id="sceneGlow" cx="50%" cy="38%" r="70%">
+              <stop offset="0" stop-color="#33291f"/>
+              <stop offset="1" stop-color="#090909"/>
+            </radialGradient>
+            <linearGradient id="whiteFur" x1="0" y1="0" x2="1" y2="1">
+              <stop stop-color="#fffdf7"/><stop offset="1" stop-color="#d9d5cc"/>
+            </linearGradient>
+            <linearGradient id="grayFur" x1="0" y1="0" x2="1" y2="1">
+              <stop stop-color="#c7c6c2"/><stop offset="1" stop-color="#73716f"/>
+            </linearGradient>
+            <filter id="softShadow" x="-30%" y="-30%" width="160%" height="170%">
+              <feGaussianBlur in="SourceAlpha" stdDeviation="8"/>
+              <feOffset dy="8"/>
+              <feComponentTransfer><feFuncA type="linear" slope=".35"/></feComponentTransfer>
+              <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+          </defs>
+          <rect width="360" height="520" fill="url(#sceneGlow)"/>
+          <ellipse cx="180" cy="459" rx="145" ry="24" fill="#000" opacity=".45"/>
+          <g class="cats" filter="url(#softShadow)">
+            <!-- White cat leaning in from the left -->
+            <g class="white-cat">
+              <path d="M43 520c5-83 30-143 98-149 52-5 84 42 85 149z" fill="url(#whiteFur)"/>
+              <path d="M56 259 70 118q3-24 22-7l57 55z" fill="#f0eee8" stroke="#d9d5cc" stroke-width="5"/>
+              <path d="m75 161 9-36 35 34z" fill="#e99b9b"/>
+              <path d="m138 166 64-66q19-19 23 7l20 145z" fill="#f8f6f0" stroke="#d9d5cc" stroke-width="5"/>
+              <path d="m174 159 35-35 12 48z" fill="#e99b9b"/>
+              <path d="M61 257c0-79 47-127 111-127 65 0 105 48 105 123 0 72-47 124-113 124S61 329 61 257z" fill="url(#whiteFur)" stroke="#d9d5cc" stroke-width="4"/>
+              <path d="M197 145c34 19 56 56 60 102-18-21-39-31-63-31-18 0-31 8-44 20 2-41 18-73 47-91z" fill="#aaa8a3" opacity=".76"/>
+              <ellipse cx="132" cy="260" rx="9" ry="13" fill="#433d38"/>
+              <path d="M192 255q10-10 20 0" fill="none" stroke="#514a43" stroke-width="6" stroke-linecap="round"/>
+              <path d="M169 284q10-10 20 0-10 12-20 0" fill="#e7838a"/>
+              <path d="M179 294v10m0 0q-9 9-17 0m17 0q9 9 17 0" fill="none" stroke="#76655e" stroke-width="3" stroke-linecap="round"/>
+              <path d="M158 290 95 282m64 14-67 5m128-10 42-12m-43 22 47 6" stroke="#9b9189" stroke-width="2" stroke-linecap="round" opacity=".8"/>
+              <ellipse cx="148" cy="297" rx="15" ry="8" fill="#f2a0a1" opacity=".4"/>
+            </g>
+            <!-- Gray cat leaning in from the right -->
+            <g class="gray-cat">
+              <path d="M138 520c1-77 28-139 91-149 55-9 91 44 94 149z" fill="url(#grayFur)"/>
+              <path d="m172 171 24-100q6-24 24-7l58 74z" fill="#aaa9a5" stroke="#777572" stroke-width="5"/>
+              <path d="m202 130 13-38 37 39z" fill="#d18a91"/>
+              <path d="m267 137 48-52q18-19 23 6l14 131z" fill="#8e8d89" stroke="#696865" stroke-width="5"/>
+              <path d="m296 124 28-29 12 46z" fill="#d18a91"/>
+              <path d="M173 249c0-75 42-123 105-123 64 0 104 48 104 123s-45 126-108 126-101-52-101-126z" fill="url(#grayFur)" stroke="#777572" stroke-width="4"/>
+              <path d="M189 218q13-43 46-62m-35 84q16-13 34-7" fill="none" stroke="#deddd8" stroke-width="8" stroke-linecap="round" opacity=".38"/>
+              <path d="M228 258q10-10 20 0" fill="none" stroke="#393632" stroke-width="6" stroke-linecap="round"/>
+              <ellipse cx="295" cy="260" rx="9" ry="13" fill="#393632"/>
+              <path d="M254 284q10-10 20 0-10 12-20 0" fill="#e7838a"/>
+              <path d="M264 294v10m0 0q-9 9-17 0m17 0q9 9 17 0" fill="none" stroke="#4e4944" stroke-width="3" stroke-linecap="round"/>
+              <path d="M244 290 205 278m40 26-42 5m83-18 53-10m-53 21 53 8" stroke="#d4d1ca" stroke-width="2" stroke-linecap="round" opacity=".75"/>
+              <ellipse cx="283" cy="297" rx="15" ry="8" fill="#efa0a1" opacity=".38"/>
+            </g>
+            <path d="M216 280q8-12 16 0-8 11-16 0" fill="#f08088" stroke="#fff0e2" stroke-width="2"/>
+            <path d="M223 269c-2-8-13-8-13 1 0 6 13 14 13 14s13-8 13-14c0-9-11-9-13-1z" fill="#ff7a7d" opacity=".9"/>
+          </g>
+          <g class="sparkles" fill="#ffd978" aria-hidden="true">
+            <path d="M67 195q3 12 15 15-12 3-15 15-3-12-15-15 12-3 15-15z"/>
+            <path d="M303 340q2 9 11 11-9 2-11 11-2-9-11-11 9-2 11-11z"/>
+            <circle cx="78" cy="356" r="4"/><circle cx="292" cy="185" r="4"/>
+          </g>
+        </svg>
+      </div>
+      <div class="message">
+        <h1><span>oh my god</span><span>thankkuuuu</span></h1>
+        <p>you actually remembered <span aria-hidden="true">😭💋</span></p>
+      </div>
+    </section>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
