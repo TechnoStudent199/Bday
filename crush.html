@@ -247,18 +247,27 @@
       window.setTimeout(() => {
         wheelResult.textContent = selectedOption.result || `The wheel landed on option ${selectedIndex + 1}! ✨`;
         spinButton.textContent = 'YOUR ONE SPIN IS DONE ✨';
-        sprinkle(22);
+        sprinkle(22, selectedIndex);
       }, 4300);
     });
 
-    function sprinkle(count) {
-      const symbols = ['♡', '✦', '✨', '💗'];
+    function sprinkle(count, outcomeIndex = null) {
+      const outcomeConfetti = [
+        { symbols: ['🍰', '🧁', '🍓', '🎁'], colors: ['#f07882', '#ffc06d', '#f7d88a'] },
+        { symbols: ['🎯', '⚡', '🔥', '💪'], colors: ['#b995c5', '#8064a8', '#f4a261'] },
+        { symbols: ['🤫', '🔐', '💌', '✨'], colors: ['#d7a45b', '#bb7892', '#f4d58d'] },
+        { symbols: ['🍀', '🌧️', '💨', '😅'], colors: ['#8b9b83', '#98a8b2', '#b2a7a1'] }
+      ];
+      const confetti = outcomeIndex === null
+        ? { symbols: ['♡', '✦', '✨', '💗'], colors: ['#c87982', '#b995c5', '#d7a45b'] }
+        : outcomeConfetti[outcomeIndex];
+
       for (let index = 0; index < count; index++) {
         const piece = document.createElement('span');
         piece.className = 'confetti';
-        piece.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+        piece.textContent = confetti.symbols[Math.floor(Math.random() * confetti.symbols.length)];
         piece.style.left = `${Math.random() * 100}vw`;
-        piece.style.color = ['#c87982', '#b995c5', '#d7a45b'][Math.floor(Math.random() * 3)];
+        piece.style.color = confetti.colors[Math.floor(Math.random() * confetti.colors.length)];
         piece.style.fontSize = `${12 + Math.random() * 13}px`;
         piece.style.animationDelay = `${Math.random() * .45}s`;
         document.body.appendChild(piece);
