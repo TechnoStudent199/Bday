@@ -1,39 +1,32 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1, maximum-scale=1,
-        user-scalable=no, viewport-fit=cover">
-
-  <meta name="theme-color" content="#080808">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#fff8ec">
   <title>thankkuuuu 😭💋</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700&display=swap"
-        rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
-    * {
-      box-sizing: border-box;
-      -webkit-tap-highlight-color: transparent;
-    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 
     html, body {
       width: 100%;
-      height: 100%;
-      height: 100dvh;
+      min-height: 100%;
+      min-height: 100dvh;
       margin: 0;
-      overflow: hidden;
-      overscroll-behavior: none;
+      overflow-x: hidden;
     }
 
     body {
-      background: #080808;
-      color: #fff8f1;
+      background:
+        radial-gradient(ellipse at 50% 12%, #fffdf5 0%, transparent 43%),
+        radial-gradient(ellipse at 8% 88%, #f3d9cf 0%, transparent 38%),
+        #f8efe1;
+      color: #60483b;
       font-family: "Outfit", sans-serif;
       user-select: none;
       -webkit-user-select: none;
@@ -43,45 +36,40 @@
       position: relative;
       width: 100%;
       max-width: 480px;
-      height: 100%;
-      height: 100dvh;
+      min-height: 100vh;
+      min-height: 100dvh;
       margin: 0 auto;
-      padding:
-        max(24px, env(safe-area-inset-top))
-        22px
-        max(24px, env(safe-area-inset-bottom));
-
+      padding: max(24px, env(safe-area-inset-top)) 22px max(24px, env(safe-area-inset-bottom));
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 25px;
+      gap: 19px;
       overflow: hidden;
       isolation: isolate;
     }
 
-    /* Soft ambient background glow */
     .ambient {
       position: absolute;
       z-index: -1;
       width: 310px;
       height: 310px;
-      top: 50%;
+      top: 48%;
       left: 50%;
-      transform: translate(-50%, -65%);
+      transform: translate(-50%, -50%);
       border-radius: 50%;
-      background: #e8a9bb;
-      opacity: .09;
-      filter: blur(90px);
+      background: radial-gradient(circle, #edbda9 0%, #f4dcae 48%, transparent 76%);
+      opacity: .3;
+      filter: blur(80px);
       animation: ambientPulse 4s ease-in-out infinite;
     }
 
     .tag {
       padding: 9px 16px;
-      border: 1px solid #ffffff20;
+      border: 1px solid #d7bda766;
       border-radius: 999px;
-      background: #ffffff08;
-      color: #ead7c6;
+      background: #fffaf0cc;
+      color: #8a6852;
       font-size: 11px;
       font-weight: 500;
       letter-spacing: 2px;
@@ -89,337 +77,194 @@
       animation: fadeIn .8s ease .1s both;
     }
 
-    /* Video card */
     .video-card {
       position: relative;
-      width: min(82vw, 330px);
+      width: min(78vw, 310px);
       aspect-ratio: 9 / 12;
-      max-height: 49dvh;
+      max-height: 43dvh;
       overflow: hidden;
-      border: 5px solid #fffaf3;
+      border: 5px solid #fffaf0;
       border-radius: 29px;
-      background: #171311;
-
-      box-shadow:
-        0 20px 60px #0009,
-        0 0 35px #ffc9a30b;
-
+      background: #ead8c4;
+      box-shadow: 0 18px 42px #76543a24, 0 0 0 1px #d8bea45c;
       opacity: 0;
       transform: scale(.84) translateY(16px);
-
-      animation:
-        popIn .9s cubic-bezier(.16, 1, .3, 1) .15s forwards;
-
-      transition: opacity .65s, transform .65s;
+      animation: popIn .9s cubic-bezier(.16, 1, .3, 1) .15s forwards;
+      transition: transform .25s ease, opacity .5s ease;
     }
+
+    .video-card:active { transform: scale(.98); }
 
     .video-card video {
       display: block;
       width: 100%;
       height: 100%;
       object-fit: cover;
-      background: #171311;
+      background: #ead8c4;
+      cursor: pointer;
     }
 
-    .video-label {
-      position: absolute;
-      top: 12px;
-      left: 50%;
-      transform: translateX(-50%);
-
-      max-width: calc(100% - 18px);
-      padding: 8px 13px;
-
-      border: 1px solid #ffffff55;
-      border-radius: 999px;
-      background: #fffdf0d9;
-
-      color: #583820;
-      font-size: 12px;
-      font-weight: 600;
-      white-space: nowrap;
-
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-    }
-
-    /* Thank-you message */
     .message {
       width: 100%;
       margin: 0;
       text-align: center;
-
       font-family: "Poppins", sans-serif;
       font-size: clamp(28px, 8vw, 37px);
       font-weight: 800;
-      line-height: 1.35;
+      line-height: 1.3;
       letter-spacing: -1px;
-
+      background: linear-gradient(105deg, #815744 10%, #bd8069 56%, #a77b4e 94%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
       opacity: 0;
-
-      animation:
-        messageIn .8s ease .65s forwards,
-        bounce 1.5s ease-in-out 1.5s infinite;
-
-      transition: opacity .5s, transform .5s;
+      animation: messageIn .8s ease .55s forwards, bounce 1.5s ease-in-out 1.5s infinite;
     }
 
-    .message .kiss {
-      display: inline-block;
-      filter: drop-shadow(0 0 12px #ff8baf66);
-    }
+    .kiss { display: inline-block; filter: drop-shadow(0 0 12px #ff8baf66); }
 
     .caption {
-      margin: -15px 0 0;
-      color: #b8aaa0;
+      margin: -14px 0 0;
+      color: #967b69;
       font-size: 14px;
       text-align: center;
       opacity: 0;
-
-      animation: fadeIn .7s ease 1s forwards;
-      transition: opacity .4s;
+      animation: fadeIn .7s ease .8s forwards;
     }
 
-    /* Transition to the cake page */
+    .surprise-button {
+      min-height: 48px;
+      padding: 12px 22px;
+      border: 1px solid #d5b28b;
+      border-radius: 999px;
+      background: linear-gradient(115deg, #f3d9aa, #e9bda8 55%, #f4e6c8);
+      color: #654632;
+      font: 700 14px "Outfit", sans-serif;
+      cursor: pointer;
+      box-shadow: 0 8px 28px #e8a9bb24;
+      transition: transform .2s ease, box-shadow .2s ease;
+      animation: fadeIn .7s ease 1s both;
+    }
+
+    .surprise-button:hover { transform: translateY(-2px); box-shadow: 0 12px 32px #e8a9bb40; }
+    .surprise-button:active { transform: scale(.97); }
+    .surprise-button:focus-visible, .video-card:focus-visible { outline: 3px solid #bd8069; outline-offset: 4px; }
+
     .transition-screen {
       position: absolute;
       inset: 0;
       z-index: 5;
-
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       gap: 17px;
       padding: 30px;
-
       text-align: center;
-
-      background:
-        radial-gradient(ellipse at 50% 45%, #211815, #080808 72%);
-
+      background: radial-gradient(ellipse at 50% 45%, #fffaf0, #f5e8d8 78%);
+      color: #654d3c;
       opacity: 0;
       visibility: hidden;
-      transition: opacity .8s, visibility .8s;
+      transition: opacity .7s, visibility .7s;
     }
 
-    .transition-screen.show {
-      opacity: 1;
-      visibility: visible;
-    }
+    .transition-screen.show { opacity: 1; visibility: visible; }
+    .transition-emoji { font-size: 47px; animation: bounce 1.3s ease-in-out infinite; }
 
-    .transition-emoji {
-      font-size: 47px;
-      animation: bounce 1.3s ease-in-out infinite;
-    }
-
-    .transition-screen h1 {
+    .transition-screen h2 {
       max-width: 340px;
       margin: 0;
-
       font-family: "Poppins", sans-serif;
       font-size: clamp(27px, 7.5vw, 34px);
       font-weight: 700;
       line-height: 1.3;
     }
 
-    .transition-screen p {
-      margin: 0;
-      color: #c7b4a4;
-      font-size: 14px;
-    }
-
-    .loading-dots {
-      margin-top: 8px;
-      color: #ffd8b0;
-      letter-spacing: 5px;
-    }
-
-    /* Animations */
-    @keyframes popIn {
-      to {
-        opacity: 1;
-        transform: scale(1) translateY(0);
-      }
-    }
-
-    @keyframes messageIn {
-      from {
-        opacity: 0;
-        transform: translateY(25px);
-        filter: blur(8px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-        filter: blur(0);
-      }
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
-    @keyframes bounce {
-      0%, 100% { translate: 0 0; }
-      50% { translate: 0 -6px; }
-    }
-
-    @keyframes ambientPulse {
-      0%, 100% {
-        scale: .9;
-        opacity: .07;
-      }
-      50% {
-        scale: 1.12;
-        opacity: .14;
-      }
-    }
+    .transition-screen p { margin: 0; color: #967b69; font-size: 14px; }
+    .loading-dots { color: #bd8069; letter-spacing: 5px; }
 
     .screen.leaving .video-card,
     .screen.leaving .message,
     .screen.leaving .caption,
-    .screen.leaving .tag {
-      opacity: 0;
-      transform: translateY(-15px) scale(.96);
+    .screen.leaving .tag,
+    .screen.leaving .surprise-button { opacity: 0; transform: translateY(-12px) scale(.96); }
+
+    @keyframes popIn { to { opacity: 1; transform: scale(1) translateY(0); } }
+    @keyframes messageIn {
+      from { opacity: 0; transform: translateY(25px); filter: blur(8px); }
+      to { opacity: 1; transform: translateY(0); filter: blur(0); }
     }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes bounce { 0%, 100% { translate: 0 0; } 50% { translate: 0 -6px; } }
+    @keyframes ambientPulse { 0%, 100% { scale: .9; opacity: .07; } 50% { scale: 1.12; opacity: .14; } }
 
-    /* Short phone screens */
     @media (max-height: 650px) {
-      .screen {
-        gap: 15px;
-      }
-
-      .video-card {
-        width: min(68vw, 245px);
-        max-height: 41dvh;
-        border-radius: 23px;
-      }
-
-      .message {
-        font-size: 28px;
-      }
-
-      .caption {
-        font-size: 12px;
-        margin-top: -8px;
-      }
-
-      .tag {
-        font-size: 10px;
-      }
+      .screen { gap: 12px; }
+      .video-card { width: min(62vw, 230px); max-height: 36dvh; border-radius: 23px; }
+      .message { font-size: 27px; }
+      .caption { font-size: 12px; }
+      .tag { font-size: 10px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .ambient,
-      .transition-emoji,
-      .loading-dots {
-        animation: none;
-      }
-
-      .video-card,
-      .message,
-      .caption,
-      .tag {
-        animation-duration: .01ms;
-      }
+      *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; }
+      .video-card, .surprise-button { transition: none; }
     }
   </style>
 </head>
-
 <body>
-
   <main class="screen" id="screen">
+    <div class="ambient" aria-hidden="true"></div>
+    <div class="tag">a little birthday moment ♡</div>
 
-    <div class="ambient"></div>
-
-    <div class="tag">
-      a little birthday moment ♡
-    </div>
-
-    <div class="video-card">
-
-      <video
-        id="catVideo"
-        autoplay
-        muted
-        loop
-        playsinline
-        preload="auto"
-      >
+    <div class="video-card" id="videoCard" role="button" tabindex="0" aria-label="Play or pause the birthday video">
+      <video id="catVideo" autoplay muted loop playsinline preload="auto">
         <source src="cat-kiss.mp4" type="video/mp4">
         Your browser does not support this video.
       </video>
-
-      <div class="video-label">
-        birthday video for u 🎂
-      </div>
-
     </div>
 
-    <h1 class="message">
-      oh my god<br>
-      thankkuuuu <span class="kiss">😭💋</span>
-    </h1>
+    <h1 class="message">oh my god<br>thankkuuuu <span class="kiss">😭💋</span></h1>
+    <p class="caption">you actually remembered 🥹</p>
+    <button class="surprise-button" id="surpriseButton" type="button">let’s cut cake together ♡</button>
 
-    <p class="caption">
-      you actually remembered 🥹
-    </p>
-
-    <section
-      class="transition-screen"
-      id="transitionScreen"
-      aria-live="polite"
-    >
+    <section class="transition-screen" id="transitionScreen" aria-live="polite" aria-hidden="true">
       <div class="transition-emoji">🎂✨</div>
-
-      <h1>
-        okay enough... let's cut cake together
-      </h1>
-
-      <p>
-        your next little surprise is waiting ♡
-      </p>
-
-      <div class="loading-dots">•••</div>
+      <h2>okay enough... let’s cut cake together</h2>
+      <p>your next little surprise is waiting ♡</p>
+      <div class="loading-dots" aria-hidden="true">•••</div>
     </section>
-
   </main>
 
   <script>
     const screen = document.getElementById("screen");
     const video = document.getElementById("catVideo");
+    const videoCard = document.getElementById("videoCard");
     const transition = document.getElementById("transitionScreen");
+    const surpriseButton = document.getElementById("surpriseButton");
 
-    // CHANGE THESE TWO VALUES TO ADJUST THE TIMING.
-    const VIDEO_DELAY = 2000;     // Wait 2 seconds before playing.
-    const VIDEO_DURATION = 3500;  // Play for 3.5 seconds.
+    function toggleVideo() {
+      if (video.paused) {
+        video.play().catch(() => {});
+      } else {
+        video.pause();
+      }
+    }
 
-    // Start the video after the delay.
-    setTimeout(() => {
+    videoCard.addEventListener("click", toggleVideo);
+    videoCard.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        toggleVideo();
+      }
+    });
 
-      video.play().catch(() => {
-        console.log(
-          "Video playback was blocked or the video could not load."
-        );
-      });
-
-      // Start the transition after the video has played.
-      setTimeout(() => {
-
-        screen.classList.add("leaving");
-        transition.classList.add("show");
-
-        // Open the separate cake page.
-        setTimeout(() => {
-          window.location.href = "cake.html";
-        }, 2400);
-
-      }, VIDEO_DURATION);
-
-    }, VIDEO_DELAY);
+    surpriseButton.addEventListener("click", () => {
+      screen.classList.add("leaving");
+      transition.classList.add("show");
+      transition.setAttribute("aria-hidden", "false");
+      video.pause();
+    });
   </script>
-
 </body>
 </html>
