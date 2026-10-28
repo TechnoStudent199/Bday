@@ -4,6 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#fff9e9">
   <title>Let's Cut the Cake 🎂</title>
 
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -16,54 +17,28 @@
       -webkit-tap-highlight-color: transparent;
     }
 
-    :root {
-      --cream: #fff9e9;
-      --peach: #ffe5b8;
-      --orange: #ffb347;
-      --pink: #ff8e9e;
-      --brown: #70452e;
-    }
-
     body {
       min-height: 100svh;
-      overflow: hidden;
+      overflow-x: hidden;
       font-family: 'Poppins', sans-serif;
+      color: #70452e;
       background: radial-gradient(
         circle at top,
         #fff9e9 0%,
         #ffefc7 55%,
         #ffde9f 100%
       );
-      color: var(--brown);
       display: flex;
       align-items: center;
       justify-content: center;
       padding: 24px 20px;
     }
 
-    .sparkle {
-      position: fixed;
-      pointer-events: none;
-      font-size: 17px;
-      opacity: 0.65;
-      animation: float 4s ease-in-out infinite;
-    }
-
-    .s1 { top: 9%; left: 10%; }
-    .s2 { top: 19%; right: 11%; animation-delay: 1s; }
-    .s3 { bottom: 17%; left: 12%; animation-delay: 1.5s; }
-    .s4 { bottom: 12%; right: 10%; animation-delay: 0.5s; }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0) rotate(0); }
-      50% { transform: translateY(-13px) rotate(12deg); }
-    }
-
     .page {
       width: 100%;
       max-width: 390px;
       text-align: center;
-      animation: appear 0.8s ease both;
+      animation: appear .8s ease both;
     }
 
     @keyframes appear {
@@ -71,13 +46,31 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
+    .sparkle {
+      position: fixed;
+      pointer-events: none;
+      font-size: 19px;
+      opacity: .7;
+      animation: float 4s ease-in-out infinite;
+    }
+
+    .s1 { top: 9%; left: 10%; }
+    .s2 { top: 19%; right: 11%; animation-delay: 1s; }
+    .s3 { bottom: 17%; left: 12%; animation-delay: 1.5s; }
+    .s4 { bottom: 12%; right: 10%; animation-delay: .5s; }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(0); }
+      50% { transform: translateY(-13px) rotate(12deg); }
+    }
+
     .top-label {
       display: inline-block;
       padding: 9px 15px;
-      background: rgba(255,255,255,0.65);
-      border: 1px solid rgba(255,179,71,0.4);
+      background: rgba(255,255,255,.65);
+      border: 1px solid rgba(255,179,71,.4);
       border-radius: 100px;
-      font-size: 11px;
+      font-size: 10px;
       font-weight: 700;
       letter-spacing: 2px;
       color: #bd7742;
@@ -102,8 +95,6 @@
       font-size: 13px;
       line-height: 1.8;
       color: #96745a;
-      max-width: 290px;
-      margin: 0 auto;
     }
 
     .cake-stage {
@@ -115,9 +106,9 @@
       align-items: center;
       justify-content: center;
       border-radius: 28px;
-      background: rgba(255,255,255,0.42);
-      border: 1px solid rgba(255,255,255,0.85);
-      box-shadow: 0 14px 35px rgba(177,119,55,0.09);
+      background: rgba(255,255,255,.42);
+      border: 1px solid rgba(255,255,255,.85);
+      box-shadow: 0 14px 35px rgba(177,119,55,.09);
       overflow: hidden;
     }
 
@@ -126,7 +117,7 @@
       width: 190px;
       height: 190px;
       border-radius: 50%;
-      background: rgba(255,183,119,0.28);
+      background: rgba(255,183,119,.28);
       filter: blur(24px);
     }
 
@@ -135,20 +126,19 @@
       z-index: 1;
       font-size: 130px;
       line-height: 1;
-      filter: drop-shadow(0 12px 10px rgba(135,82,35,0.15));
+      filter: drop-shadow(0 12px 10px rgba(135,82,35,.15));
       transform-origin: center bottom;
-      transition: transform 0.3s ease;
       user-select: none;
     }
 
     .cake.cut {
-      animation: cakeCut 0.65s ease;
+      animation: cakeCut .65s ease;
     }
 
     @keyframes cakeCut {
       0% { transform: scale(1) rotate(0); }
       30% { transform: scale(1.08) rotate(-5deg); }
-      60% { transform: scale(0.95) rotate(4deg); }
+      60% { transform: scale(.95) rotate(4deg); }
       100% { transform: scale(1) rotate(0); }
     }
 
@@ -160,7 +150,13 @@
       z-index: 2;
       font-size: 11px;
       color: #b58b67;
-      letter-spacing: 0.5px;
+    }
+
+    button {
+      font-family: 'Poppins', sans-serif;
+      cursor: pointer;
+      -webkit-appearance: none;
+      appearance: none;
     }
 
     .cut-button {
@@ -170,27 +166,25 @@
       border-radius: 18px;
       background: linear-gradient(135deg, #ff8e9e, #ffb347);
       color: white;
-      font-family: 'Poppins', sans-serif;
       font-size: 14px;
       font-weight: 700;
-      box-shadow: 0 9px 20px rgba(241,131,117,0.25);
-      cursor: pointer;
-      transition: transform 0.15s ease;
+      box-shadow: 0 9px 20px rgba(241,131,117,.25);
     }
 
-    .cut-button:active {
-      transform: scale(0.97);
+    .cut-button:active,
+    .next-button:active {
+      transform: scale(.97);
     }
 
     .wish {
       min-height: 45px;
       margin-top: 18px;
       font-size: 13px;
-      line-height: 1.7;
+      line-height: 1.8;
       color: #a36e4d;
       opacity: 0;
       transform: translateY(8px);
-      transition: 0.4s ease;
+      transition: .4s ease;
     }
 
     .wish.show {
@@ -202,23 +196,25 @@
       width: 100%;
       min-height: 54px;
       margin-top: 10px;
-      border: 1.5px solid rgba(190,127,72,0.35);
+      border: 1.5px solid rgba(190,127,72,.35);
       border-radius: 18px;
-      background: rgba(255,255,255,0.55);
+      background: rgba(255,255,255,.65);
       color: #855334;
-      font-family: 'Poppins', sans-serif;
       font-size: 13px;
       font-weight: 600;
-      opacity: 0;
-      pointer-events: none;
-      transform: translateY(8px);
-      transition: 0.4s ease;
+      display: none;
     }
 
     .next-button.show {
-      opacity: 1;
-      pointer-events: auto;
-      transform: translateY(0);
+      display: block;
+      animation: appear .4s ease both;
+    }
+
+    .footer {
+      margin-top: 20px;
+      font-size: 10px;
+      color: #b58d68;
+      letter-spacing: 1px;
     }
 
     .confetti {
@@ -229,7 +225,7 @@
       border-radius: 3px;
       pointer-events: none;
       z-index: 5;
-      animation: fall 2.4s ease-in forwards;
+      animation: fall 2.5s ease-in forwards;
     }
 
     @keyframes fall {
@@ -239,17 +235,53 @@
       }
     }
 
-    .footer {
-      margin-top: 20px;
-      font-size: 10px;
-      color: #b58d68;
-      letter-spacing: 1px;
+    .transition {
+      position: fixed;
+      inset: 0;
+      z-index: 10;
+      background: #fff5df;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 25px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .65s ease;
+    }
+
+    .transition.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .transition .emoji {
+      font-size: 65px;
+      margin-bottom: 18px;
+      animation: float 1.5s ease-in-out infinite;
+    }
+
+    .transition h2 {
+      font: 400 34px 'DM Serif Display', serif;
+      color: #75482f;
+    }
+
+    .transition p {
+      margin-top: 10px;
+      color: #a36e4d;
+      font-size: 13px;
+    }
+
+    @media (max-height: 720px) {
+      .cake-stage { min-height: 190px; margin: 18px auto; }
+      .cake { font-size: 105px; }
+      .top-label { margin-bottom: 15px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after {
-        animation-duration: 0.01ms !important;
-        transition-duration: 0.01ms !important;
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
       }
     }
   </style>
@@ -271,10 +303,12 @@
       and a whole lot of love for you.
     </p>
 
-    <section class="cake-stage" aria-label="Birthday cake">
+    <section class="cake-stage">
       <div class="cake-glow"></div>
-      <div class="cake" id="cake" aria-label="Birthday cake">🎂</div>
-      <div class="cake-hint" id="cakeHint">made with extra birthday magic ✨</div>
+      <div class="cake" id="cake">🎂</div>
+      <div class="cake-hint" id="cakeHint">
+        made with extra birthday magic ✨
+      </div>
     </section>
 
     <button class="cut-button" id="cutButton">
@@ -293,14 +327,22 @@
     <div class="footer">MADE WITH ♡ AND A LITTLE MAGIC</div>
   </main>
 
+  <div class="transition" id="transition">
+    <div class="emoji">🎁</div>
+    <h2>One more surprise...</h2>
+    <p>Something special is waiting for you ♡</p>
+  </div>
+
   <script>
     const cake = document.getElementById('cake');
     const cutButton = document.getElementById('cutButton');
     const cakeHint = document.getElementById('cakeHint');
     const wish = document.getElementById('wish');
     const nextButton = document.getElementById('nextButton');
+    const transition = document.getElementById('transition');
 
     let cakeHasBeenCut = false;
+    let redirectTimer;
 
     function makeConfetti() {
       const colors = ['#FFB347', '#FF6B6B', '#FFD93D', '#FF8E9E', '#FFFFFF'];
@@ -311,14 +353,21 @@
         piece.style.left = Math.random() * 100 + 'vw';
         piece.style.backgroundColor =
           colors[Math.floor(Math.random() * colors.length)];
-        piece.style.animationDelay = Math.random() * 0.8 + 's';
+        piece.style.animationDelay = Math.random() * .8 + 's';
         piece.style.animationDuration = (1.7 + Math.random() * 1.5) + 's';
-        piece.style.width = (5 + Math.random() * 6) + 'px';
-        piece.style.height = (7 + Math.random() * 8) + 'px';
 
         document.body.appendChild(piece);
         setTimeout(() => piece.remove(), 4000);
       }
+    }
+
+    function goToGiftPage() {
+      clearTimeout(redirectTimer);
+      transition.classList.add('show');
+
+      setTimeout(() => {
+        window.location.assign('./gift.html');
+      }, 900);
     }
 
     cutButton.addEventListener('click', () => {
@@ -332,21 +381,21 @@
 
       cakeHint.textContent = 'a little slice of birthday happiness ♡';
       cutButton.textContent = '💗 Cake successfully cut!!';
-      cutButton.style.background = 'linear-gradient(135deg, #ffad91, #f28a9a)';
+      cutButton.disabled = true;
 
       wish.classList.add('show');
       nextButton.classList.add('show');
 
       makeConfetti();
 
-      if (navigator.vibrate) {
-        navigator.vibrate(80);
-      }
+      if (navigator.vibrate) navigator.vibrate(80);
+
+      // AUTOMATIC REDIRECT 4 SECONDS AFTER CUTTING THE CAKE
+      redirectTimer = setTimeout(goToGiftPage, 4000);
     });
 
-    nextButton.addEventListener('click', () => {
-      window.location.href = 'gift.html';
-    });
+    // The surprise button can also open the gift page immediately
+    nextButton.addEventListener('click', goToGiftPage);
   </script>
 </body>
 </html>
