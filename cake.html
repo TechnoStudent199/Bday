@@ -4,86 +4,51 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#fff9e9">
-  <title>Let's Cut the Cake 🎂</title>
+  <title>Birthday Cake 🎂</title>
 
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
     * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
       -webkit-tap-highlight-color: transparent;
     }
 
     body {
       min-height: 100svh;
-      overflow-x: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 24px 20px;
       font-family: 'Poppins', sans-serif;
       color: #70452e;
-      background: radial-gradient(
-        circle at top,
-        #fff9e9 0%,
-        #ffefc7 55%,
-        #ffde9f 100%
-      );
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 24px 20px;
+      text-align: center;
+      background: radial-gradient(circle at top, #fff9e9, #ffefc7 60%, #ffde9f);
     }
 
     .page {
       width: 100%;
       max-width: 390px;
-      text-align: center;
-      animation: appear .8s ease both;
     }
 
-    @keyframes appear {
-      from { opacity: 0; transform: translateY(18px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .sparkle {
-      position: fixed;
-      pointer-events: none;
-      font-size: 19px;
-      opacity: .7;
-      animation: float 4s ease-in-out infinite;
-    }
-
-    .s1 { top: 9%; left: 10%; }
-    .s2 { top: 19%; right: 11%; animation-delay: 1s; }
-    .s3 { bottom: 17%; left: 12%; animation-delay: 1.5s; }
-    .s4 { bottom: 12%; right: 10%; animation-delay: .5s; }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0) rotate(0); }
-      50% { transform: translateY(-13px) rotate(12deg); }
-    }
-
-    .top-label {
+    .label {
       display: inline-block;
       padding: 9px 15px;
-      background: rgba(255,255,255,.65);
-      border: 1px solid rgba(255,179,71,.4);
-      border-radius: 100px;
+      margin-bottom: 22px;
+      border: 1px solid #f4c7a3;
+      border-radius: 50px;
+      background: #ffffff88;
+      color: #bd7742;
       font-size: 10px;
       font-weight: 700;
       letter-spacing: 2px;
-      color: #bd7742;
-      margin-bottom: 23px;
     }
 
     h1 {
-      font-family: 'DM Serif Display', serif;
-      font-size: clamp(36px, 10vw, 45px);
-      font-weight: 400;
-      line-height: 1.12;
+      font: 400 clamp(35px, 10vw, 45px)/1.15 'DM Serif Display', serif;
       margin-bottom: 12px;
-      color: #75482f;
     }
 
     h1 span {
@@ -98,116 +63,85 @@
     }
 
     .cake-stage {
-      margin: 27px auto 23px;
       position: relative;
-      width: 100%;
-      min-height: 245px;
       display: flex;
-      align-items: center;
       justify-content: center;
-      border-radius: 28px;
-      background: rgba(255,255,255,.42);
-      border: 1px solid rgba(255,255,255,.85);
-      box-shadow: 0 14px 35px rgba(177,119,55,.09);
+      align-items: center;
+      min-height: 230px;
+      margin: 25px 0 20px;
       overflow: hidden;
-    }
-
-    .cake-glow {
-      position: absolute;
-      width: 190px;
-      height: 190px;
-      border-radius: 50%;
-      background: rgba(255,183,119,.28);
-      filter: blur(24px);
+      border: 1px solid #ffffffcc;
+      border-radius: 28px;
+      background: #ffffff70;
+      box-shadow: 0 14px 35px #b1773717;
     }
 
     .cake {
       position: relative;
       z-index: 1;
-      font-size: 130px;
-      line-height: 1;
-      filter: drop-shadow(0 12px 10px rgba(135,82,35,.15));
-      transform-origin: center bottom;
+      font-size: 125px;
       user-select: none;
+      filter: drop-shadow(0 12px 10px #87522322);
     }
 
     .cake.cut {
-      animation: cakeCut .65s ease;
+      animation: cutCake .6s ease;
     }
 
-    @keyframes cakeCut {
-      0% { transform: scale(1) rotate(0); }
-      30% { transform: scale(1.08) rotate(-5deg); }
-      60% { transform: scale(.95) rotate(4deg); }
+    @keyframes cutCake {
+      30% { transform: scale(1.1) rotate(-6deg); }
+      65% { transform: scale(.95) rotate(5deg); }
       100% { transform: scale(1) rotate(0); }
     }
 
-    .cake-hint {
-      position: absolute;
-      bottom: 17px;
-      left: 0;
-      right: 0;
-      z-index: 2;
-      font-size: 11px;
-      color: #b58b67;
-    }
-
     button {
-      font-family: 'Poppins', sans-serif;
+      display: block;
+      width: 100%;
+      min-height: 55px;
+      padding: 13px;
+      border: none;
+      border-radius: 17px;
+      font: 600 13px 'Poppins', sans-serif;
       cursor: pointer;
-      -webkit-appearance: none;
-      appearance: none;
+      touch-action: manipulation;
     }
 
-    .cut-button {
-      width: 100%;
-      min-height: 56px;
-      border: none;
-      border-radius: 18px;
-      background: linear-gradient(135deg, #ff8e9e, #ffb347);
+    #cutButton {
       color: white;
+      background: linear-gradient(135deg, #ff8e9e, #ffb347);
+      box-shadow: 0 9px 20px #f1837540;
       font-size: 14px;
       font-weight: 700;
-      box-shadow: 0 9px 20px rgba(241,131,117,.25);
     }
 
-    .cut-button:active,
-    .next-button:active {
-      transform: scale(.97);
+    #cutButton:disabled {
+      opacity: .8;
     }
 
     .wish {
-      min-height: 45px;
-      margin-top: 18px;
+      margin-top: 17px;
       font-size: 13px;
       line-height: 1.8;
       color: #a36e4d;
-      opacity: 0;
-      transform: translateY(8px);
-      transition: .4s ease;
     }
 
-    .wish.show {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .next-button {
-      width: 100%;
-      min-height: 54px;
+    #status {
+      min-height: 26px;
       margin-top: 10px;
-      border: 1.5px solid rgba(190,127,72,.35);
-      border-radius: 18px;
-      background: rgba(255,255,255,.65);
-      color: #855334;
-      font-size: 13px;
-      font-weight: 600;
-      display: none;
+      font-size: 12px;
+      color: #a36e4d;
     }
 
-    .next-button.show {
+    #nextButton {
+      display: none;
+      margin-top: 10px;
+      color: #855334;
+      background: #ffffffc9;
+      border: 1px solid #e8c6a5;
+    }
+
+    #nextButton.show {
       display: block;
-      animation: appear .4s ease both;
     }
 
     .footer {
@@ -219,12 +153,9 @@
 
     .confetti {
       position: fixed;
-      top: -20px;
-      width: 8px;
-      height: 12px;
-      border-radius: 3px;
-      pointer-events: none;
+      top: -15px;
       z-index: 5;
+      pointer-events: none;
       animation: fall 2.5s ease-in forwards;
     }
 
@@ -239,62 +170,43 @@
       position: fixed;
       inset: 0;
       z-index: 10;
-      background: #fff5df;
-      display: flex;
+      display: none;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       padding: 25px;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity .65s ease;
+      background: #fff5df;
     }
 
     .transition.show {
-      opacity: 1;
-      pointer-events: auto;
+      display: flex;
     }
 
     .transition .emoji {
       font-size: 65px;
-      margin-bottom: 18px;
-      animation: float 1.5s ease-in-out infinite;
+      animation: bounce 1s ease-in-out infinite alternate;
     }
 
     .transition h2 {
-      font: 400 34px 'DM Serif Display', serif;
-      color: #75482f;
+      margin-top: 15px;
+      font: 400 32px 'DM Serif Display', serif;
     }
 
     .transition p {
       margin-top: 10px;
-      color: #a36e4d;
       font-size: 13px;
+      color: #a36e4d;
     }
 
-    @media (max-height: 720px) {
-      .cake-stage { min-height: 190px; margin: 18px auto; }
-      .cake { font-size: 105px; }
-      .top-label { margin-bottom: 15px; }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        animation-duration: .01ms !important;
-        transition-duration: .01ms !important;
-      }
+    @keyframes bounce {
+      to { transform: translateY(-10px); }
     }
   </style>
 </head>
 
 <body>
-  <div class="sparkle s1">✦</div>
-  <div class="sparkle s2">♡</div>
-  <div class="sparkle s3">✧</div>
-  <div class="sparkle s4">♡</div>
-
   <main class="page">
-    <div class="top-label">♡ THE BIRTHDAY CONTINUES ♡</div>
+    <div class="label">♡ THE BIRTHDAY CONTINUES ♡</div>
 
     <h1>Okayyy, let's<br><span>cut the cake!</span> 🎂</h1>
 
@@ -304,24 +216,22 @@
     </p>
 
     <section class="cake-stage">
-      <div class="cake-glow"></div>
       <div class="cake" id="cake">🎂</div>
-      <div class="cake-hint" id="cakeHint">
-        made with extra birthday magic ✨
-      </div>
     </section>
 
-    <button class="cut-button" id="cutButton">
+    <button type="button" id="cutButton">
       🔪 Tap here to cut the cake!
     </button>
 
-    <p class="wish" id="wish" aria-live="polite">
-      YAYYY, CAKE CUTTING TIME!! 🥹💗<br>
-      May your day be filled with love, laughter &amp; happiness.
+    <p class="wish" id="wish" hidden>
+      YAYYYY, CAKE CUTTING TIME!! 🥹💗<br>
+      May your day be filled with love and happiness!
     </p>
 
-    <button class="next-button" id="nextButton">
-      One more surprise awaits... 🎁 →
+    <p id="status" aria-live="polite"></p>
+
+    <button type="button" id="nextButton">
+      Not redirecting? Tap here to open your gift 🎁
     </button>
 
     <div class="footer">MADE WITH ♡ AND A LITTLE MAGIC</div>
@@ -329,73 +239,89 @@
 
   <div class="transition" id="transition">
     <div class="emoji">🎁</div>
-    <h2>One more surprise...</h2>
-    <p>Something special is waiting for you ♡</p>
+    <h2>Your next surprise...</h2>
+    <p>Taking you to your little gift ♡</p>
   </div>
 
   <script>
-    const cake = document.getElementById('cake');
-    const cutButton = document.getElementById('cutButton');
-    const cakeHint = document.getElementById('cakeHint');
-    const wish = document.getElementById('wish');
-    const nextButton = document.getElementById('nextButton');
-    const transition = document.getElementById('transition');
+    (() => {
+      const cake = document.getElementById('cake');
+      const cutButton = document.getElementById('cutButton');
+      const wish = document.getElementById('wish');
+      const status = document.getElementById('status');
+      const nextButton = document.getElementById('nextButton');
+      const transition = document.getElementById('transition');
 
-    let cakeHasBeenCut = false;
-    let redirectTimer;
+      let started = false;
+      let redirectTimer;
+      let countdownTimer;
 
-    function makeConfetti() {
-      const colors = ['#FFB347', '#FF6B6B', '#FFD93D', '#FF8E9E', '#FFFFFF'];
+      // Resolve the next page relative to this page's actual URL.
+      const giftURL = new URL('gift.html', window.location.href).href;
 
-      for (let i = 0; i < 55; i++) {
-        const piece = document.createElement('div');
-        piece.className = 'confetti';
-        piece.style.left = Math.random() * 100 + 'vw';
-        piece.style.backgroundColor =
-          colors[Math.floor(Math.random() * colors.length)];
-        piece.style.animationDelay = Math.random() * .8 + 's';
-        piece.style.animationDuration = (1.7 + Math.random() * 1.5) + 's';
+      function openGift() {
+        clearTimeout(redirectTimer);
+        clearInterval(countdownTimer);
 
-        document.body.appendChild(piece);
-        setTimeout(() => piece.remove(), 4000);
+        status.textContent = 'Opening your surprise...';
+        transition.classList.add('show');
+
+        // Navigate directly to gift.html.
+        window.location.href = giftURL;
       }
-    }
 
-    function goToGiftPage() {
-      clearTimeout(redirectTimer);
-      transition.classList.add('show');
+      function celebrate() {
+        const colors = ['#FFB347', '#FF6B6B', '#FFD93D', '#FF8E9E'];
 
-      setTimeout(() => {
-        window.location.assign('./gift.html');
-      }, 900);
-    }
+        for (let i = 0; i < 45; i++) {
+          const piece = document.createElement('div');
+          piece.className = 'confetti';
+          piece.textContent = Math.random() > 0.5 ? '✦' : '•';
+          piece.style.left = Math.random() * 100 + 'vw';
+          piece.style.color = colors[i % colors.length];
+          piece.style.fontSize = (10 + Math.random() * 12) + 'px';
+          piece.style.animationDelay = Math.random() * 0.7 + 's';
 
-    cutButton.addEventListener('click', () => {
-      if (cakeHasBeenCut) return;
+          document.body.appendChild(piece);
+          setTimeout(() => piece.remove(), 3500);
+        }
+      }
 
-      cakeHasBeenCut = true;
+      cutButton.addEventListener('click', () => {
+        if (started) return;
+        started = true;
 
-      cake.classList.remove('cut');
-      void cake.offsetWidth;
-      cake.classList.add('cut');
+        cake.classList.remove('cut');
+        void cake.offsetWidth;
+        cake.classList.add('cut');
 
-      cakeHint.textContent = 'a little slice of birthday happiness ♡';
-      cutButton.textContent = '💗 Cake successfully cut!!';
-      cutButton.disabled = true;
+        cutButton.disabled = true;
+        cutButton.textContent = '💗 Cake successfully cut!';
+        wish.hidden = false;
+        nextButton.classList.add('show');
 
-      wish.classList.add('show');
-      nextButton.classList.add('show');
+        celebrate();
 
-      makeConfetti();
+        let seconds = 4;
+        status.textContent = `Your gift opens in ${seconds} seconds...`;
 
-      if (navigator.vibrate) navigator.vibrate(80);
+        countdownTimer = setInterval(() => {
+          seconds--;
 
-      // AUTOMATIC REDIRECT 4 SECONDS AFTER CUTTING THE CAKE
-      redirectTimer = setTimeout(goToGiftPage, 4000);
-    });
+          if (seconds > 0) {
+            status.textContent = `Your gift opens in ${seconds} seconds...`;
+          } else {
+            clearInterval(countdownTimer);
+          }
+        }, 1000);
 
-    // The surprise button can also open the gift page immediately
-    nextButton.addEventListener('click', goToGiftPage);
+        // Automatic redirect after the celebration.
+        redirectTimer = setTimeout(openGift, 4000);
+      });
+
+      // Backup: the user can open the gift immediately.
+      nextButton.addEventListener('click', openGift);
+    })();
   </script>
 </body>
 </html>
