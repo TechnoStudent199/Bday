@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Let's Cut the Cake! 🎂</title>
+<title>A Little Birthday Thank-You 🎂</title>
 
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
@@ -341,17 +341,17 @@ h2 {
 
   <!-- CAKE CUTTING SECTION ONLY -->
   <section id="cakeSection">
-    <div class="label">♡ THE BIRTHDAY CONTINUES ♡</div>
+    <div class="label">♡ THANK YOU FOR THE BIRTHDAY WISH ♡</div>
 
-    <h1>Okayyy, let's<br><em>cut the cake!</em> 🎂</h1>
+    <h1>You made my<br><em>birthday sweeter!</em> 🥹</h1>
 
     <p class="subtitle">
-      One little cake, a million sweet wishes,<br>
-      and a whole lot of love for you.
+      Your birthday wish made my day.<br>
+      Come celebrate this little moment with me! 💛
     </p>
 
     <p class="candle-instruction">
-      First, tap all three candles to blow them out! 🕯️
+      Tap all three candles, then swipe to cut our cake! 🕯️
     </p>
 
     <div class="candles">
@@ -378,8 +378,8 @@ h2 {
     </button>
 
     <p class="cake-message hidden" id="cakeMessage">
-      YAYYYY, CAKE CUTTING TIME!! 🥹💗<br>
-      May your day be filled with love, laughter &amp; happiness!
+      YAYYYY, WE CUT THE CAKE! 🥹💗<br>
+      Thanks for making my birthday feel extra special!
     </p>
 
     <div class="scroll-hint hidden" id="scrollHint">
@@ -394,13 +394,13 @@ h2 {
 
   <!-- GIFT SECTION ON THE SAME PAGE -->
   <section class="gift-section" id="giftSection">
-    <div class="label">♡ YOUR SPECIAL GIFT ♡</div>
+    <div class="label">♡ A LITTLE THANK-YOU ♡</div>
 
-    <h2>You've been so<br><em>amazing ♡</em></h2>
+    <h2>This one's<br><em>for you ♡</em></h2>
 
     <p class="subtitle">
-      You cut the cake, and now it's time<br>
-      to open your little gift...
+      Open a tiny thank-you for making<br>
+      my birthday brighter 💌
     </p>
 
     <div class="gift-stage">
@@ -408,31 +408,33 @@ h2 {
     </div>
 
     <button class="gift-button" id="openGiftButton">
-      OPEN MY GIFT 🎁
+      OPEN YOUR THANK-YOU 💌
     </button>
 
-    <p class="subtitle" id="giftHint">(it's something special...)</p>
+    <p class="subtitle" id="giftHint">there's a little note waiting for you ♡</p>
 
     <div class="gift-message hidden" id="giftMessage">
-      <h3>A little note for you 💌</h3>
+      <h3>A note from me to you 💌</h3>
 
       <p>
-        Thank you for being YOU. ♡<br>
-        Thank you for the smiles, the memories,<br>
-        and all the little moments that matter.<br><br>
-        You deserve a day full of happiness,<br>
-        love, laughter, and all your favourite things.<br>
-        Never forget how special you are! 🥹💗
+        Thank you for remembering my birthday. ♡<br>
+        Your sweet wish, kind words, and thoughtfulness<br>
+        made me feel so loved and celebrated.<br><br>
+        I'm so lucky to have you in my life.<br>
+        Sending you the biggest hug! 🥹💗
       </p>
 
+      <button class="wish-button" id="copyThanksButton">
+        Copy my thank-you message 💌
+      </button>
+      <p class="secret-wish" id="copyStatus" role="status" aria-live="polite"></p>
+
       <button class="wish-button" id="wishButton">
-        🫙 Tap for one more little surprise
+        Send a virtual birthday hug back 💗
       </button>
 
       <p class="secret-wish hidden" id="secretWish">
-        ✨ A tiny wish just for you ✨<br>
-        May something wonderful find its way<br>
-        into your life very, very soon! 💖
+        Hug sent! Thank you for making my birthday extra lovely ✨💖
       </p>
     </div>
   </section>
@@ -456,6 +458,8 @@ const giftMessage = document.getElementById('giftMessage');
 const giftHint = document.getElementById('giftHint');
 const wishButton = document.getElementById('wishButton');
 const secretWish = document.getElementById('secretWish');
+const copyThanksButton = document.getElementById('copyThanksButton');
+const copyStatus = document.getElementById('copyStatus');
 
 let cakeCut = false;
 let giftOpened = false;
@@ -623,10 +627,10 @@ openGiftButton.addEventListener('click', () => {
   if (giftOpened) return;
   giftOpened = true;
 
-  giftEmoji.textContent = '🎉';
-  openGiftButton.textContent = 'YOUR LITTLE GIFT IS OPENED 💗';
+  giftEmoji.textContent = '💌';
+  openGiftButton.textContent = 'THANK YOU FOR CELEBRATING WITH ME 💗';
   openGiftButton.disabled = true;
-  giftHint.textContent = 'A little happiness, wrapped just for you ♡';
+  giftHint.textContent = 'A little love, wrapped up just for you ♡';
 
   giftMessage.classList.remove('hidden');
   confettiBurst();
@@ -637,6 +641,31 @@ openGiftButton.addEventListener('click', () => {
       block: 'center'
     });
   }, 150);
+});
+
+copyThanksButton.addEventListener('click', async () => {
+  const message = "Thank you for remembering my birthday. Your sweet wish made me feel so loved and celebrated. I'm so lucky to have you in my life. Sending you the biggest hug! ♡";
+
+  try {
+    if (navigator.clipboard && window.isSecureContext) {
+      await navigator.clipboard.writeText(message);
+    } else {
+      const temporaryInput = document.createElement('textarea');
+      temporaryInput.value = message;
+      temporaryInput.style.position = 'fixed';
+      temporaryInput.style.opacity = '0';
+      document.body.appendChild(temporaryInput);
+      temporaryInput.select();
+      const copied = document.execCommand('copy');
+      temporaryInput.remove();
+      if (!copied) throw new Error('Copy failed');
+    }
+
+    copyStatus.textContent = 'Copied! Send a little love back ♡';
+    confettiTiny();
+  } catch (error) {
+    copyStatus.textContent = 'You can copy the thank-you note above and send it ♡';
+  }
 });
 
 wishButton.addEventListener('click', () => {
