@@ -3,14 +3,18 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+
   <meta name="viewport"
-        content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+        content="width=device-width, initial-scale=1, maximum-scale=1,
+        user-scalable=no, viewport-fit=cover">
+
   <meta name="theme-color" content="#080808">
   <title>thankkuuuu 😭💋</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
 
   <style>
     * {
@@ -46,6 +50,7 @@
         max(24px, env(safe-area-inset-top))
         22px
         max(24px, env(safe-area-inset-bottom));
+
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -55,6 +60,7 @@
       isolation: isolate;
     }
 
+    /* Soft ambient background glow */
     .ambient {
       position: absolute;
       z-index: -1;
@@ -83,6 +89,7 @@
       animation: fadeIn .8s ease .1s both;
     }
 
+    /* Video card */
     .video-card {
       position: relative;
       width: min(82vw, 330px);
@@ -92,12 +99,17 @@
       border: 5px solid #fffaf3;
       border-radius: 29px;
       background: #171311;
+
       box-shadow:
         0 20px 60px #0009,
         0 0 35px #ffc9a30b;
+
       opacity: 0;
       transform: scale(.84) translateY(16px);
-      animation: popIn .9s cubic-bezier(.16, 1, .3, 1) .15s forwards;
+
+      animation:
+        popIn .9s cubic-bezier(.16, 1, .3, 1) .15s forwards;
+
       transition: opacity .65s, transform .65s;
     }
 
@@ -114,31 +126,41 @@
       top: 12px;
       left: 50%;
       transform: translateX(-50%);
+
       max-width: calc(100% - 18px);
       padding: 8px 13px;
+
       border: 1px solid #ffffff55;
       border-radius: 999px;
       background: #fffdf0d9;
+
       color: #583820;
       font-size: 12px;
       font-weight: 600;
       white-space: nowrap;
+
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
     }
 
+    /* Thank-you message */
     .message {
       width: 100%;
       margin: 0;
       text-align: center;
+
       font-family: "Poppins", sans-serif;
       font-size: clamp(28px, 8vw, 37px);
       font-weight: 800;
       line-height: 1.35;
       letter-spacing: -1px;
+
       opacity: 0;
-      animation: messageIn .8s ease .65s forwards,
-                 bounce 1.5s ease-in-out 1.5s infinite;
+
+      animation:
+        messageIn .8s ease .65s forwards,
+        bounce 1.5s ease-in-out 1.5s infinite;
+
       transition: opacity .5s, transform .5s;
     }
 
@@ -153,23 +175,29 @@
       font-size: 14px;
       text-align: center;
       opacity: 0;
+
       animation: fadeIn .7s ease 1s forwards;
       transition: opacity .4s;
     }
 
+    /* Transition to the cake page */
     .transition-screen {
       position: absolute;
       inset: 0;
       z-index: 5;
+
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       gap: 17px;
       padding: 30px;
+
       text-align: center;
+
       background:
         radial-gradient(ellipse at 50% 45%, #211815, #080808 72%);
+
       opacity: 0;
       visibility: hidden;
       transition: opacity .8s, visibility .8s;
@@ -188,6 +216,7 @@
     .transition-screen h1 {
       max-width: 340px;
       margin: 0;
+
       font-family: "Poppins", sans-serif;
       font-size: clamp(27px, 7.5vw, 34px);
       font-weight: 700;
@@ -200,20 +229,31 @@
       font-size: 14px;
     }
 
-    .transition-screen .loading-dots {
+    .loading-dots {
       margin-top: 8px;
       color: #ffd8b0;
       letter-spacing: 5px;
-      animation: fadeIn .6s ease both;
     }
 
+    /* Animations */
     @keyframes popIn {
-      to { opacity: 1; transform: scale(1) translateY(0); }
+      to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+      }
     }
 
     @keyframes messageIn {
-      from { opacity: 0; transform: translateY(25px); filter: blur(8px); }
-      to { opacity: 1; transform: translateY(0); filter: blur(0); }
+      from {
+        opacity: 0;
+        transform: translateY(25px);
+        filter: blur(8px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+      }
     }
 
     @keyframes fadeIn {
@@ -227,8 +267,14 @@
     }
 
     @keyframes ambientPulse {
-      0%, 100% { scale: .9; opacity: .07; }
-      50% { scale: 1.12; opacity: .14; }
+      0%, 100% {
+        scale: .9;
+        opacity: .07;
+      }
+      50% {
+        scale: 1.12;
+        opacity: .14;
+      }
     }
 
     .screen.leaving .video-card,
@@ -239,40 +285,77 @@
       transform: translateY(-15px) scale(.96);
     }
 
+    /* Short phone screens */
     @media (max-height: 650px) {
-      .screen { gap: 15px; }
+      .screen {
+        gap: 15px;
+      }
+
       .video-card {
         width: min(68vw, 245px);
         max-height: 41dvh;
         border-radius: 23px;
       }
-      .message { font-size: 28px; }
-      .caption { font-size: 12px; margin-top: -8px; }
-      .tag { font-size: 10px; }
+
+      .message {
+        font-size: 28px;
+      }
+
+      .caption {
+        font-size: 12px;
+        margin-top: -8px;
+      }
+
+      .tag {
+        font-size: 10px;
+      }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        animation-duration: .01ms !important;
-        animation-iteration-count: 1 !important;
+      .ambient,
+      .transition-emoji,
+      .loading-dots {
+        animation: none;
+      }
+
+      .video-card,
+      .message,
+      .caption,
+      .tag {
+        animation-duration: .01ms;
       }
     }
   </style>
 </head>
 
 <body>
+
   <main class="screen" id="screen">
+
     <div class="ambient"></div>
 
-    <div class="tag">a little birthday moment ♡</div>
+    <div class="tag">
+      a little birthday moment ♡
+    </div>
 
     <div class="video-card">
-      <video id="catVideo" autoplay muted loop playsinline preload="auto">
+
+      <video
+        id="catVideo"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="auto"
+      >
         <source src="cat-kiss.mp4" type="video/mp4">
         Your browser does not support this video.
       </video>
 
-      <div class="video-label">birthday video for u 🎂</div>
+      <div class="video-label">
+        birthday video for u 🎂
+      </div>
+
     </div>
 
     <h1 class="message">
@@ -280,14 +363,28 @@
       thankkuuuu <span class="kiss">😭💋</span>
     </h1>
 
-    <p class="caption">you actually remembered 🥹</p>
+    <p class="caption">
+      you actually remembered 🥹
+    </p>
 
-    <section class="transition-screen" id="transitionScreen">
+    <section
+      class="transition-screen"
+      id="transitionScreen"
+      aria-live="polite"
+    >
       <div class="transition-emoji">🎂✨</div>
-      <h1>okay enough... let's cut cake together</h1>
-      <p>your next little surprise is waiting ♡</p>
+
+      <h1>
+        okay enough... let's cut cake together
+      </h1>
+
+      <p>
+        your next little surprise is waiting ♡
+      </p>
+
       <div class="loading-dots">•••</div>
     </section>
+
   </main>
 
   <script>
@@ -295,21 +392,34 @@
     const video = document.getElementById("catVideo");
     const transition = document.getElementById("transitionScreen");
 
-    // Muted inline autoplay is supported by most modern mobile browsers.
-    video.play().catch(() => {
-      // Playback can still depend on browser settings and video compatibility.
-    });
+    // CHANGE THESE TWO VALUES TO ADJUST THE TIMING.
+    const VIDEO_DELAY = 2000;     // Wait 2 seconds before playing.
+    const VIDEO_DURATION = 3500;  // Play for 3.5 seconds.
 
-    // Start the transition 3.5 seconds after the page opens.
+    // Start the video after the delay.
     setTimeout(() => {
-      screen.classList.add("leaving");
-      transition.classList.add("show");
 
-      // Separate page: cake.html
+      video.play().catch(() => {
+        console.log(
+          "Video playback was blocked or the video could not load."
+        );
+      });
+
+      // Start the transition after the video has played.
       setTimeout(() => {
-        window.location.href = "cake.html";
-      }, 5000);
-    }, 3500);
+
+        screen.classList.add("leaving");
+        transition.classList.add("show");
+
+        // Open the separate cake page.
+        setTimeout(() => {
+          window.location.href = "cake.html";
+        }, 2400);
+
+      }, VIDEO_DURATION);
+
+    }, VIDEO_DELAY);
   </script>
+
 </body>
 </html>
