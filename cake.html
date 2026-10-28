@@ -2,528 +2,651 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#fff9e9">
-  <title>A Little Birthday Surprise 🎂🎁</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Let's Cut the Cake! 🎂</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      -webkit-tap-highlight-color: transparent;
-    }
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
 
-    html {
-      scroll-behavior: smooth;
-      scroll-padding-top: 20px;
-    }
+body {
+  min-height: 100vh;
+  font-family: 'Poppins', sans-serif;
+  color: #70452e;
+  background: radial-gradient(circle at top, #FFF9E9, #FFEFC7 55%, #FFDE9F);
+  overflow-x: hidden;
+}
 
-    body {
-      min-height: 100%;
-      font-family: 'Poppins', sans-serif;
-      color: #70452e;
-      background: radial-gradient(
-        circle at top,
-        #fff9e9 0%,
-        #ffefc7 55%,
-        #ffde9f 100%
-      );
-      overflow-x: hidden;
-    }
+button {
+  font-family: inherit;
+  cursor: pointer;
+  touch-action: manipulation;
+}
 
-    button {
-      font-family: 'Poppins', sans-serif;
-      cursor: pointer;
-      touch-action: manipulation;
-      -webkit-tap-highlight-color: transparent;
-    }
+.page {
+  width: 100%;
+  max-width: 430px;
+  margin: auto;
+  padding: 35px 22px 50px;
+  text-align: center;
+}
 
-    .page {
-      width: 100%;
-      max-width: 430px;
-      margin: auto;
-      padding: 30px 22px 45px;
-      text-align: center;
-      position: relative;
-      z-index: 1;
-    }
+.label {
+  display: inline-block;
+  padding: 9px 16px;
+  border: 1px solid #f3c3a0;
+  border-radius: 50px;
+  background: #ffffff90;
+  color: #ad7046;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin-bottom: 24px;
+}
 
-    .sparkle {
-      position: absolute;
-      pointer-events: none;
-      color: #f6ad52;
-      font-size: 23px;
-      animation: float 3s ease-in-out infinite;
-    }
+h1 {
+  font: 400 42px/1.15 'DM Serif Display', serif;
+  color: #75482f;
+}
 
-    .sparkle.one { top: 110px; left: 12px; }
-    .sparkle.two { top: 230px; right: 12px; animation-delay: 1s; }
-    .sparkle.three { top: 600px; left: 18px; animation-delay: .5s; }
+h1 em, h2 em {
+  color: #f07882;
+}
 
-    @keyframes float {
-      0%, 100% { transform: translateY(0) rotate(0); }
-      50% { transform: translateY(-10px) rotate(12deg); }
-    }
+.subtitle {
+  margin-top: 14px;
+  font-size: 13px;
+  line-height: 1.9;
+  color: #96745a;
+}
 
-    .label {
-      display: inline-block;
-      padding: 9px 15px;
-      border: 1px solid #f3c3a0;
-      border-radius: 50px;
-      background: #ffffff85;
-      color: #ad7046;
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 2px;
-      margin: 8px 0 23px;
-    }
+.candle-instruction {
+  margin: 22px 0 12px;
+  font-size: 12px;
+  line-height: 1.8;
+  color: #a36e4d;
+}
 
-    h1 {
-      font: 400 clamp(37px, 10vw, 46px)/1.13 'DM Serif Display', serif;
-      color: #75482f;
-    }
+.candles {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+}
 
-    h1 em {
-      color: #f07882;
-      font-weight: 400;
-    }
+.candle {
+  width: 54px;
+  height: 54px;
+  border: 1px solid #f4c3a0;
+  border-radius: 16px;
+  background: #fffaf0;
+  font-size: 25px;
+  box-shadow: 0 5px 12px #a36e4d12;
+}
 
-    .subtitle {
-      margin-top: 14px;
-      font-size: 13px;
-      line-height: 1.9;
-      color: #96745a;
-    }
+.candle.out {
+  background: #f4e5d5;
+  opacity: .75;
+}
 
-    .cake-stage {
-      margin: 26px auto 20px;
-      min-height: 225px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      border-radius: 28px;
-      border: 1px solid #ffffffd9;
-      background: #ffffff69;
-      box-shadow: 0 14px 35px #b1773717;
-      overflow: hidden;
-    }
+.cake-stage {
+  position: relative;
+  margin: 25px auto 14px;
+  height: 230px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 28px;
+  border: 1px solid #ffffffd9;
+  background: #ffffff69;
+  box-shadow: 0 14px 35px #b1773717;
+  overflow: hidden;
+  touch-action: none;
+  user-select: none;
+}
 
-    .cake {
-      font-size: 125px;
-      line-height: 1.2;
-      user-select: none;
-      filter: drop-shadow(0 12px 10px #87522320);
-    }
+.cake {
+  font-size: 125px;
+  line-height: 1;
+  position: relative;
+  z-index: 2;
+  pointer-events: none;
+  filter: drop-shadow(0 12px 10px #87522320);
+}
 
-    .cake.cut {
-      animation: cutCake .65s ease;
-    }
+.slash-trail {
+  position: absolute;
+  z-index: 5;
+  height: 5px;
+  border-radius: 99px;
+  pointer-events: none;
+  background: linear-gradient(90deg, #fff, #ff6685, #fff7c7);
+  box-shadow: 0 0 8px #ff8e9e, 0 0 18px #ffb347;
+  transform-origin: left center;
+}
 
-    @keyframes cutCake {
-      30% { transform: scale(1.1) rotate(-6deg); }
-      65% { transform: scale(.95) rotate(5deg); }
-      100% { transform: scale(1) rotate(0); }
-    }
+.slash-flash {
+  position: absolute;
+  z-index: 4;
+  width: 95%;
+  height: 5px;
+  border-radius: 99px;
+  background: linear-gradient(90deg, transparent, #ff758f, #fff, #ffb347, transparent);
+  box-shadow: 0 0 15px #ff8e9e;
+  transform: rotate(-18deg) scaleX(0);
+  pointer-events: none;
+}
 
-    .primary-button {
-      width: 100%;
-      min-height: 55px;
-      padding: 13px;
-      border: none;
-      border-radius: 18px;
-      background: linear-gradient(135deg, #ff8e9e, #ffb347);
-      color: white;
-      font-size: 14px;
-      font-weight: 700;
-      box-shadow: 0 9px 20px #f1837535;
-    }
+.cake-stage.sliced .slash-flash {
+  animation: slashFlash .5s ease-out forwards;
+}
 
-    .cake-message {
-      margin-top: 19px;
-      font-size: 13px;
-      line-height: 1.9;
-      color: #a36e4d;
-    }
+@keyframes slashFlash {
+  0% { opacity: 1; transform: rotate(-18deg) scaleX(0); }
+  35% { opacity: 1; transform: rotate(-18deg) scaleX(1); }
+  100% { opacity: 0; transform: rotate(-18deg) scaleX(1); }
+}
 
-    .hidden {
-      display: none !important;
-    }
+.cake-stage.sliced .cake {
+  animation: cakeSlice .7s ease-in forwards;
+}
 
-    /* Scroll hint */
-    .scroll-hint {
-      margin: 28px 0 0;
-      padding: 19px 14px;
-      border: 1px dashed #e7ad7f;
-      border-radius: 20px;
-      background: #fff8e5c9;
-      animation: hintPulse 2s ease-in-out infinite;
-    }
+@keyframes cakeSlice {
+  0% { transform: scale(1); }
+  20% { transform: scale(1.12) rotate(-9deg); }
+  45% { transform: translate(-12px,-5px) rotate(-16deg); }
+  70% { transform: translate(12px,4px) rotate(12deg); }
+  100% { transform: scale(.98); }
+}
 
-    @keyframes hintPulse {
-      0%, 100% { box-shadow: 0 0 0 rgba(255,179,71,0); }
-      50% { box-shadow: 0 0 20px rgba(255,179,71,.2); }
-    }
+.game-status {
+  min-height: 25px;
+  margin: 12px 0;
+  font-size: 12px;
+  line-height: 1.8;
+  color: #a36e4d;
+}
 
-    .scroll-hint p {
-      font-size: 13px;
-      line-height: 1.8;
-      color: #946447;
-    }
+.primary-button, .gift-button {
+  width: 100%;
+  min-height: 55px;
+  padding: 13px;
+  border: none;
+  border-radius: 18px;
+  background: linear-gradient(135deg, #ff8e9e, #ffb347);
+  color: white;
+  font-size: 14px;
+  font-weight: 700;
+  box-shadow: 0 9px 20px #f1837535;
+}
 
-    .scroll-hint strong {
-      color: #e27683;
-    }
+.primary-button:active, .gift-button:active {
+  transform: scale(.97);
+}
 
-    .scroll-arrow {
-      display: block;
-      margin-top: 7px;
-      color: #e27683;
-      font-size: 25px;
-      animation: arrowBounce 1s ease-in-out infinite;
-    }
+.hidden {
+  display: none !important;
+}
 
-    @keyframes arrowBounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(6px); }
-    }
+.cake-message {
+  margin-top: 22px;
+  font-size: 13px;
+  line-height: 2;
+  color: #a36e4d;
+}
 
-    /* Gift section */
-    .gift-section {
-      margin-top: 65px;
-      padding-top: 28px;
-      border-top: 1px solid #e8c69f;
-      scroll-margin-top: 20px;
-    }
+.scroll-hint {
+  margin-top: 28px;
+  padding: 20px 14px;
+  border: 1px dashed #e7ad7f;
+  border-radius: 20px;
+  background: #fff8e5c9;
+  animation: hintPulse 2s ease-in-out infinite;
+}
 
-    .gift-section h2 {
-      font: 400 38px/1.2 'DM Serif Display', serif;
-      color: #75482f;
-    }
+@keyframes hintPulse {
+  50% { box-shadow: 0 0 20px #ffb34733; }
+}
 
-    .gift-section h2 em {
-      color: #f07882;
-    }
+.scroll-hint p {
+  font-size: 13px;
+  line-height: 1.9;
+  color: #946447;
+}
 
-    .gift-subtitle {
-      margin: 12px auto 0;
-      max-width: 300px;
-      color: #96745a;
-      font-size: 13px;
-      line-height: 1.9;
-    }
+.scroll-hint strong {
+  color: #e27683;
+}
 
-    .gift-stage {
-      min-height: 245px;
-      margin: 25px 0 20px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 28px;
-      border: 1px solid #ffffffd9;
-      background: #ffffff70;
-      box-shadow: 0 14px 35px #b1773717;
-    }
+.scroll-arrow {
+  display: block;
+  margin-top: 8px;
+  color: #e27683;
+  font-size: 25px;
+  animation: bounce 1s infinite;
+}
 
-    .gift-emoji {
-      font-size: 135px;
-      filter: drop-shadow(0 14px 12px #87522320);
-      animation: giftFloat 2.5s ease-in-out infinite;
-    }
+@keyframes bounce {
+  50% { transform: translateY(6px); }
+}
 
-    @keyframes giftFloat {
-      0%, 100% { transform: translateY(0) rotate(-2deg); }
-      50% { transform: translateY(-9px) rotate(2deg); }
-    }
+.gift-section {
+  margin-top: 65px;
+  padding-top: 35px;
+  border-top: 1px solid #e8c69f;
+  scroll-margin-top: 20px;
+}
 
-    .gift-emoji.opened {
-      animation: giftPop .65s ease;
-    }
+h2 {
+  font: 400 38px/1.2 'DM Serif Display', serif;
+  color: #75482f;
+}
 
-    @keyframes giftPop {
-      30% { transform: scale(1.15) rotate(-8deg); }
-      65% { transform: scale(.93) rotate(6deg); }
-      100% { transform: scale(1) rotate(0); }
-    }
+.gift-stage {
+  min-height: 240px;
+  margin: 25px 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 28px;
+  border: 1px solid #ffffffd9;
+  background: #ffffff70;
+}
 
-    .gift-button {
-      width: 100%;
-      min-height: 57px;
-      padding: 13px;
-      border: none;
-      border-radius: 50px;
-      background: linear-gradient(135deg, #75452b, #9a603c);
-      color: #fff9e9;
-      font-size: 14px;
-      font-weight: 700;
-      box-shadow: 0 10px 24px #75452b30;
-    }
+.gift-emoji {
+  font-size: 130px;
+  animation: giftFloat 2.5s ease-in-out infinite;
+}
 
-    .gift-message {
-      margin-top: 22px;
-      padding: 23px 18px;
-      border: 1px solid #ffffffec;
-      border-radius: 25px;
-      background: #ffffffa0;
-      box-shadow: 0 12px 30px #9d693b12;
-      animation: appear .6s ease;
-    }
+@keyframes giftFloat {
+  50% { transform: translateY(-9px) rotate(3deg); }
+}
 
-    @keyframes appear {
-      from { opacity: 0; transform: translateY(12px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+.gift-button {
+  border-radius: 50px;
+  background: linear-gradient(135deg, #75452b, #9a603c);
+}
 
-    .gift-message h3 {
-      font: 400 29px 'DM Serif Display', serif;
-      color: #815036;
-      margin-bottom: 12px;
-    }
+.gift-message {
+  margin-top: 22px;
+  padding: 23px 18px;
+  border: 1px solid #ffffffec;
+  border-radius: 25px;
+  background: #ffffffa0;
+}
 
-    .gift-message p {
-      font-size: 13px;
-      line-height: 2;
-      color: #956746;
-    }
+.gift-message h3 {
+  font: 400 29px 'DM Serif Display', serif;
+  color: #815036;
+  margin-bottom: 12px;
+}
 
-    .wish-button {
-      margin-top: 16px;
-      width: 100%;
-      min-height: 52px;
-      border: 1px solid #f1b7a6;
-      border-radius: 16px;
-      background: #fff9ed;
-      color: #995a45;
-      font-size: 12px;
-      font-weight: 600;
-    }
+.gift-message p {
+  font-size: 13px;
+  line-height: 2;
+  color: #956746;
+}
 
-    .secret-wish {
-      margin-top: 16px;
-      color: #dc6d83;
-      font-size: 14px;
-      line-height: 1.9;
-    }
+.wish-button {
+  margin-top: 16px;
+  width: 100%;
+  min-height: 52px;
+  border: 1px solid #f1b7a6;
+  border-radius: 16px;
+  background: #fff9ed;
+  color: #995a45;
+  font-size: 12px;
+  font-weight: 600;
+}
 
-    .footer {
-      margin-top: 45px;
-      color: #c77b70;
-      font-size: 10px;
-      letter-spacing: 2px;
-    }
+.secret-wish {
+  margin-top: 16px;
+  color: #dc6d83;
+  font-size: 14px;
+  line-height: 1.9;
+}
 
-    .confetti {
-      position: fixed;
-      top: -15px;
-      z-index: 10;
-      pointer-events: none;
-      animation: fall 2.6s ease-in forwards;
-    }
+.confetti {
+  position: fixed;
+  top: -15px;
+  z-index: 10;
+  pointer-events: none;
+  animation: fall 2.6s ease-in forwards;
+}
 
-    @keyframes fall {
-      to {
-        transform: translateY(110svh) rotate(720deg);
-        opacity: 0;
-      }
-    }
+@keyframes fall {
+  to {
+    transform: translateY(110vh) rotate(720deg);
+    opacity: 0;
+  }
+}
 
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        animation-duration: .01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: .01ms !important;
-        scroll-behavior: auto !important;
-      }
-    }
-  </style>
+.footer {
+  margin-top: 45px;
+  color: #c77b70;
+  font-size: 10px;
+  letter-spacing: 2px;
+}
+</style>
 </head>
 
 <body>
-  <main class="page">
-    <span class="sparkle one">✦</span>
-    <span class="sparkle two">♡</span>
-    <span class="sparkle three">✧</span>
+<main class="page">
 
-    <!-- CAKE SECTION -->
-    <section id="cakeSection">
-      <div class="label">♡ THE BIRTHDAY CONTINUES ♡</div>
+  <!-- CAKE CUTTING SECTION ONLY -->
+  <section id="cakeSection">
+    <div class="label">♡ THE BIRTHDAY CONTINUES ♡</div>
 
-      <h1>Okayyy, let's<br><em>cut the cake!</em> 🎂</h1>
+    <h1>Okayyy, let's<br><em>cut the cake!</em> 🎂</h1>
 
-      <p class="subtitle">
-        One little cake, a million sweet wishes,<br>
-        and a whole lot of love for you.
+    <p class="subtitle">
+      One little cake, a million sweet wishes,<br>
+      and a whole lot of love for you.
+    </p>
+
+    <p class="candle-instruction">
+      First, tap all three candles to blow them out! 🕯️
+    </p>
+
+    <div class="candles">
+      <button class="candle" data-candle="0" aria-label="Blow out candle one">🕯️</button>
+      <button class="candle" data-candle="1" aria-label="Blow out candle two">🕯️</button>
+      <button class="candle" data-candle="2" aria-label="Blow out candle three">🕯️</button>
+    </div>
+
+    <p class="candle-instruction" id="cutInstruction">
+      Then swipe FAST across the cake, Fruit Ninja style! ⚔️
+    </p>
+
+    <div class="cake-stage" id="cakeStage">
+      <div class="slash-flash"></div>
+      <div class="cake" id="cake">🎂</div>
+    </div>
+
+    <p class="game-status" id="gameStatus">
+      Candles left: 3 ✨
+    </p>
+
+    <button class="primary-button" id="cutButton">
+      ⚔️ SWIPE TO SLICE!
+    </button>
+
+    <p class="cake-message hidden" id="cakeMessage">
+      YAYYYY, CAKE CUTTING TIME!! 🥹💗<br>
+      May your day be filled with love, laughter &amp; happiness!
+    </p>
+
+    <div class="scroll-hint hidden" id="scrollHint">
+      <p>
+        Pssttt... 👀 <strong>THAT'S NOT ALL!</strong><br>
+        There's another little surprise waiting below.<br>
+        Scroll down to discover your gift! 🎁
+      </p>
+      <span class="scroll-arrow">↓</span>
+    </div>
+  </section>
+
+  <!-- GIFT SECTION ON THE SAME PAGE -->
+  <section class="gift-section" id="giftSection">
+    <div class="label">♡ YOUR SPECIAL GIFT ♡</div>
+
+    <h2>You've been so<br><em>amazing ♡</em></h2>
+
+    <p class="subtitle">
+      You cut the cake, and now it's time<br>
+      to open your little gift...
+    </p>
+
+    <div class="gift-stage">
+      <div class="gift-emoji" id="giftEmoji">🎁</div>
+    </div>
+
+    <button class="gift-button" id="openGiftButton">
+      OPEN MY GIFT 🎁
+    </button>
+
+    <p class="subtitle" id="giftHint">(it's something special...)</p>
+
+    <div class="gift-message hidden" id="giftMessage">
+      <h3>A little note for you 💌</h3>
+
+      <p>
+        Thank you for being YOU. ♡<br>
+        Thank you for the smiles, the memories,<br>
+        and all the little moments that matter.<br><br>
+        You deserve a day full of happiness,<br>
+        love, laughter, and all your favourite things.<br>
+        Never forget how special you are! 🥹💗
       </p>
 
-      <div class="cake-stage">
-        <div class="cake" id="cake">🎂</div>
-      </div>
-
-      <button class="primary-button" id="cutButton" type="button">
-        🔪 Tap here to cut the cake!
+      <button class="wish-button" id="wishButton">
+        🫙 Tap for one more little surprise
       </button>
 
-      <p class="cake-message hidden" id="cakeMessage" aria-live="polite">
-        YAYYYY, CAKE CUTTING TIME!! 🥹💗<br>
-        May your day be filled with love, laughter &amp; happiness!
+      <p class="secret-wish hidden" id="secretWish">
+        ✨ A tiny wish just for you ✨<br>
+        May something wonderful find its way<br>
+        into your life very, very soon! 💖
       </p>
+    </div>
+  </section>
 
-      <div class="scroll-hint hidden" id="scrollHint">
-        <p>
-          Pssttt... 👀 <strong>THAT'S NOT ALL!</strong><br>
-          There's another little surprise waiting below.<br>
-          Scroll down to discover your gift! 🎁
-        </p>
-        <span class="scroll-arrow">↓</span>
-      </div>
-    </section>
+  <footer class="footer">♡ THANK YOU FOR BEING YOU ♡</footer>
+</main>
 
-    <!-- GIFT SECTION: SAME PAGE, NO REDIRECT -->
-    <section class="gift-section" id="giftSection">
-      <div class="label">♡ YOUR SPECIAL GIFT ♡</div>
+<script>
+const cake = document.getElementById('cake');
+const cakeStage = document.getElementById('cakeStage');
+const cutButton = document.getElementById('cutButton');
+const cakeMessage = document.getElementById('cakeMessage');
+const scrollHint = document.getElementById('scrollHint');
+const candles = [...document.querySelectorAll('[data-candle]')];
+const cutInstruction = document.getElementById('cutInstruction');
+const gameStatus = document.getElementById('gameStatus');
 
-      <h2>You've been so<br><em>amazing ♡</em></h2>
+const giftEmoji = document.getElementById('giftEmoji');
+const openGiftButton = document.getElementById('openGiftButton');
+const giftMessage = document.getElementById('giftMessage');
+const giftHint = document.getElementById('giftHint');
+const wishButton = document.getElementById('wishButton');
+const secretWish = document.getElementById('secretWish');
 
-      <p class="gift-subtitle">
-        You cut the cake, and now it's time<br>
-        to open your little gift...
-      </p>
+let cakeCut = false;
+let giftOpened = false;
+let wishOpened = false;
+const blownOut = new Set();
+let swipeStart = null;
+let trailElement = null;
 
-      <div class="gift-stage">
-        <div class="gift-emoji" id="giftEmoji">🎁</div>
-      </div>
+candles.forEach((button, index) => {
+  button.addEventListener('click', () => {
+    if (cakeCut || blownOut.has(index)) return;
 
-      <button class="gift-button" id="openGiftButton" type="button">
-        OPEN MY GIFT 🎁
-      </button>
+    blownOut.add(index);
+    button.classList.add('out');
+    button.textContent = '💨';
 
-      <p class="gift-subtitle" id="giftHint">
-        (it's something special...)
-      </p>
+    const left = candles.length - blownOut.size;
 
-      <div class="gift-message hidden" id="giftMessage" aria-live="polite">
-        <h3>A little note for you 💌</h3>
-        <p>
-          Thank you for being YOU. ♡<br>
-          Thank you for the smiles, the memories,<br>
-          and all the little moments that matter.<br><br>
-          You deserve a day full of happiness,<br>
-          love, laughter, and all your favourite things.<br>
-          Never forget how special you are! 🥹💗
-        </p>
+    gameStatus.textContent = left
+      ? `Candles left: ${left} ✨`
+      : 'ALL CANDLES OUT! NOW SLICE THAT CAKE! ⚔️';
 
-        <button class="wish-button" id="wishButton" type="button">
-          🫙 Tap for one more little surprise
-        </button>
+    confettiTiny();
+  });
+});
 
-        <p class="secret-wish hidden" id="secretWish">
-          ✨ A tiny wish just for you ✨<br>
-          May something wonderful find its way<br>
-          into your life very, very soon! 💖
-        </p>
-      </div>
-    </section>
+function confettiTiny() {
+  const piece = document.createElement('div');
+  piece.className = 'confetti';
+  piece.textContent = '✨';
+  piece.style.left = (25 + Math.random() * 50) + 'vw';
+  piece.style.color = '#ff8e9e';
+  piece.style.fontSize = '18px';
+  document.body.appendChild(piece);
+  setTimeout(() => piece.remove(), 2700);
+}
 
-    <footer class="footer">♡ THANK YOU FOR BEING YOU ♡</footer>
-  </main>
+function drawTrail(from, to) {
+  const stageRect = cakeStage.getBoundingClientRect();
+  const dx = to.x - from.x;
+  const dy = to.y - from.y;
+  const length = Math.hypot(dx, dy);
 
-  <script>
-    const cake = document.getElementById('cake');
-    const cutButton = document.getElementById('cutButton');
-    const cakeMessage = document.getElementById('cakeMessage');
-    const scrollHint = document.getElementById('scrollHint');
+  if (trailElement) trailElement.remove();
 
-    const giftEmoji = document.getElementById('giftEmoji');
-    const openGiftButton = document.getElementById('openGiftButton');
-    const giftMessage = document.getElementById('giftMessage');
-    const giftHint = document.getElementById('giftHint');
+  trailElement = document.createElement('div');
+  trailElement.className = 'slash-trail';
+  trailElement.style.left = `${from.x - stageRect.left}px`;
+  trailElement.style.top = `${from.y - stageRect.top}px`;
+  trailElement.style.width = `${length}px`;
+  trailElement.style.transform = `rotate(${Math.atan2(dy, dx)}rad)`;
 
-    const wishButton = document.getElementById('wishButton');
-    const secretWish = document.getElementById('secretWish');
+  cakeStage.appendChild(trailElement);
 
-    let cakeCut = false;
-    let giftOpened = false;
-    let wishOpened = false;
+  setTimeout(() => {
+    trailElement?.remove();
+    trailElement = null;
+  }, 240);
+}
 
-    function confettiBurst() {
-      const colors = ['#FFB347', '#FF6B6B', '#FFD93D', '#FF8E9E', '#FFFFFF'];
+cakeStage.addEventListener('pointerdown', event => {
+  if (cakeCut) return;
 
-      for (let i = 0; i < 45; i++) {
-        const piece = document.createElement('div');
-        piece.className = 'confetti';
-        piece.textContent = Math.random() > 0.5 ? '✦' : '♥';
-        piece.style.left = Math.random() * 100 + 'vw';
-        piece.style.color = colors[Math.floor(Math.random() * colors.length)];
-        piece.style.fontSize = (10 + Math.random() * 12) + 'px';
-        piece.style.animationDelay = Math.random() * .6 + 's';
+  event.preventDefault();
+  swipeStart = { x: event.clientX, y: event.clientY };
 
-        document.body.appendChild(piece);
-        setTimeout(() => piece.remove(), 3500);
-      }
+  cakeStage.setPointerCapture(event.pointerId);
+});
 
-      if (navigator.vibrate) navigator.vibrate(60);
-    }
+cakeStage.addEventListener('pointermove', event => {
+  if (!swipeStart || cakeCut) return;
 
-    cutButton.addEventListener('click', () => {
-      if (cakeCut) return;
-      cakeCut = true;
+  drawTrail(swipeStart, {
+    x: event.clientX,
+    y: event.clientY
+  });
+});
 
-      cake.classList.remove('cut');
-      void cake.offsetWidth;
-      cake.classList.add('cut');
+cakeStage.addEventListener('pointerup', event => {
+  if (!swipeStart || cakeCut) return;
 
-      cutButton.textContent = '💗 Cake successfully cut!';
-      cutButton.disabled = true;
+  const start = swipeStart;
+  const end = { x: event.clientX, y: event.clientY };
+  const rect = cake.getBoundingClientRect();
+  const distance = Math.hypot(end.x - start.x, end.y - start.y);
 
-      cakeMessage.classList.remove('hidden');
-      scrollHint.classList.remove('hidden');
+  const crossedCake =
+    Math.min(start.x, end.x) <= rect.right &&
+    Math.max(start.x, end.x) >= rect.left &&
+    Math.min(start.y, end.y) <= rect.bottom &&
+    Math.max(start.y, end.y) >= rect.top;
 
-      confettiBurst();
+  drawTrail(start, end);
+  swipeStart = null;
 
-      // Make the new scroll hint easy to notice.
-      setTimeout(() => {
-        scrollHint.scrollIntoView({
-          behavior: 'smooth',
-          block: 'center'
-        });
-      }, 450);
+  if (blownOut.size < candles.length) {
+    gameStatus.textContent = 'Blow out all 3 candles first! 🕯️';
+    return;
+  }
+
+  if (distance > 45 && crossedCake) {
+    finishCut();
+  } else {
+    gameStatus.textContent = 'SWIPE FASTER across the cake! ⚔️';
+  }
+});
+
+cakeStage.addEventListener('pointercancel', () => {
+  swipeStart = null;
+});
+
+cutButton.addEventListener('click', () => {
+  if (cakeCut) return;
+
+  gameStatus.textContent = blownOut.size < candles.length
+    ? 'Tap all three candles first! 🕯️'
+    : 'Swipe your finger or mouse across the cake! 💨';
+});
+
+function finishCut() {
+  if (cakeCut) return;
+  cakeCut = true;
+
+  cakeStage.classList.add('sliced');
+  cutButton.textContent = '💗 CAKE SLICED!!';
+  cutButton.disabled = true;
+
+  cakeMessage.classList.remove('hidden');
+  scrollHint.classList.remove('hidden');
+
+  gameStatus.textContent = 'PERFECT SLICE!! Happy birthday! 🎉';
+  gameStatus.style.color = '#d7657b';
+  gameStatus.style.fontWeight = '700';
+  cutInstruction.textContent = 'YOU DID IT! 🍰✨';
+
+  confettiBurst();
+
+  setTimeout(() => {
+    scrollHint.scrollIntoView({
+      behavior: 'smooth',
+      block: 'center'
     });
+  }, 650);
+}
 
-    openGiftButton.addEventListener('click', () => {
-      if (giftOpened) return;
-      giftOpened = true;
+function confettiBurst() {
+  const colors = ['#FFB347', '#FF6B6B', '#FFD93D', '#FF8E9E', '#FFFFFF'];
 
-      giftEmoji.classList.remove('opened');
-      void giftEmoji.offsetWidth;
-      giftEmoji.classList.add('opened');
+  for (let i = 0; i < 45; i++) {
+    const piece = document.createElement('div');
+    piece.className = 'confetti';
+    piece.textContent = Math.random() > 0.5 ? '✦' : '♥';
+    piece.style.left = Math.random() * 100 + 'vw';
+    piece.style.color = colors[Math.floor(Math.random() * colors.length)];
+    piece.style.fontSize = (10 + Math.random() * 12) + 'px';
 
-      openGiftButton.textContent = 'YOUR LITTLE GIFT IS OPENED 💗';
-      openGiftButton.disabled = true;
-      giftHint.textContent = 'a little happiness, wrapped just for you ♡';
+    document.body.appendChild(piece);
+    setTimeout(() => piece.remove(), 3000);
+  }
 
-      giftMessage.classList.remove('hidden');
-      confettiBurst();
+  if (navigator.vibrate) navigator.vibrate(60);
+}
 
-      setTimeout(() => {
-        giftMessage.scrollIntoView({
-          behavior: 'smooth',
-          block: 'center'
-        });
-      }, 150);
+openGiftButton.addEventListener('click', () => {
+  if (giftOpened) return;
+  giftOpened = true;
+
+  giftEmoji.textContent = '🎉';
+  openGiftButton.textContent = 'YOUR LITTLE GIFT IS OPENED 💗';
+  openGiftButton.disabled = true;
+  giftHint.textContent = 'A little happiness, wrapped just for you ♡';
+
+  giftMessage.classList.remove('hidden');
+  confettiBurst();
+
+  setTimeout(() => {
+    giftMessage.scrollIntoView({
+      behavior: 'smooth',
+      block: 'center'
     });
+  }, 150);
+});
 
-    wishButton.addEventListener('click', () => {
-      if (wishOpened) return;
-      wishOpened = true;
+wishButton.addEventListener('click', () => {
+  if (wishOpened) return;
+  wishOpened = true;
 
-      secretWish.classList.remove('hidden');
-      wishButton.textContent = 'YOUR LITTLE WISH IS HERE 💖';
-
-      confettiBurst();
-    });
-  </script>
+  secretWish.classList.remove('hidden');
+  wishButton.textContent = 'YOUR LITTLE WISH IS HERE 💖';
+  confettiBurst();
+});
+</script>
 </body>
 </html>
