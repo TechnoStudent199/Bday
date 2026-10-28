@@ -293,25 +293,6 @@ h2 {
   color: #956746;
 }
 
-.wish-button {
-  margin-top: 16px;
-  width: 100%;
-  min-height: 52px;
-  border: 1px solid #f1b7a6;
-  border-radius: 16px;
-  background: #fff9ed;
-  color: #995a45;
-  font-size: 12px;
-  font-weight: 600;
-}
-
-.secret-wish {
-  margin-top: 16px;
-  color: #dc6d83;
-  font-size: 14px;
-  line-height: 1.9;
-}
-
 .confetti {
   position: fixed;
   top: -15px;
@@ -421,20 +402,8 @@ h2 {
         Your sweet wish, kind words, and thoughtfulness<br>
         made me feel so loved and celebrated.<br><br>
         I'm so lucky to have you in my life.<br>
-        Sending you the biggest hug! 🥹💗
-      </p>
-
-      <button class="wish-button" id="copyThanksButton">
-        Copy my thank-you message 💌
-      </button>
-      <p class="secret-wish" id="copyStatus" role="status" aria-live="polite"></p>
-
-      <button class="wish-button" id="wishButton">
-        Send a virtual birthday hug back 💗
-      </button>
-
-      <p class="secret-wish hidden" id="secretWish">
-        Hug sent! Thank you for making my birthday extra lovely ✨💖
+        Sending you the biggest hug! 🥹💗<br><br>
+        I hope you stay with me for my 17th birthday too ♡
       </p>
     </div>
   </section>
@@ -464,14 +433,9 @@ const giftEmoji = document.getElementById('giftEmoji');
 const openGiftButton = document.getElementById('openGiftButton');
 const giftMessage = document.getElementById('giftMessage');
 const giftHint = document.getElementById('giftHint');
-const wishButton = document.getElementById('wishButton');
-const secretWish = document.getElementById('secretWish');
-const copyThanksButton = document.getElementById('copyThanksButton');
-const copyStatus = document.getElementById('copyStatus');
 
 let cakeCut = false;
 let giftOpened = false;
-let wishOpened = false;
 const blownOut = new Set();
 let swipeStart = null;
 let trailElement = null;
@@ -651,39 +615,7 @@ openGiftButton.addEventListener('click', () => {
   }, 150);
 });
 
-copyThanksButton.addEventListener('click', async () => {
-  const message = "Thank you for remembering my birthday. Your sweet wish made me feel so loved and celebrated. I'm so lucky to have you in my life. Sending you the biggest hug! ♡";
 
-  try {
-    if (navigator.clipboard && window.isSecureContext) {
-      await navigator.clipboard.writeText(message);
-    } else {
-      const temporaryInput = document.createElement('textarea');
-      temporaryInput.value = message;
-      temporaryInput.style.position = 'fixed';
-      temporaryInput.style.opacity = '0';
-      document.body.appendChild(temporaryInput);
-      temporaryInput.select();
-      const copied = document.execCommand('copy');
-      temporaryInput.remove();
-      if (!copied) throw new Error('Copy failed');
-    }
-
-    copyStatus.textContent = 'Copied! Send a little love back ♡';
-    confettiTiny();
-  } catch (error) {
-    copyStatus.textContent = 'You can copy the thank-you note above and send it ♡';
-  }
-});
-
-wishButton.addEventListener('click', () => {
-  if (wishOpened) return;
-  wishOpened = true;
-
-  secretWish.classList.remove('hidden');
-  wishButton.textContent = 'YOUR LITTLE WISH IS HERE 💖';
-  confettiBurst();
-});
 </script>
 </body>
 </html>
