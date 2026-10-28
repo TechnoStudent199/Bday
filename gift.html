@@ -1,0 +1,401 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#fff4dc">
+  <title>Your Special Gift 🎁</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    :root {
+      --cream: #fff9e9;
+      --peach: #ffe6bf;
+      --pink: #ff8293;
+      --orange: #ffb347;
+      --brown: #70452e;
+    }
+
+    body {
+      min-height: 100svh;
+      overflow-x: hidden;
+      font-family: 'Poppins', sans-serif;
+      color: var(--brown);
+      background:
+        radial-gradient(ellipse at 50% 30%, #fffdf2 0%, transparent 55%),
+        linear-gradient(180deg, #fff9e9 0%, #ffefc7 53%, #ffdfaa 100%);
+    }
+
+    .confetti {
+      position: fixed;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      pointer-events: none;
+      animation: float 5s ease-in-out infinite;
+      opacity: .85;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(0); }
+      50% { transform: translateY(-18px) rotate(30deg); }
+    }
+
+    .page {
+      width: 100%;
+      max-width: 440px;
+      min-height: 100svh;
+      margin: auto;
+      padding: 30px 23px 25px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .label {
+      padding: 10px 17px;
+      border: 1px solid #ffc1a0;
+      border-radius: 50px;
+      background: rgba(255,255,255,.55);
+      color: #a45d38;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      margin: 10px 0 25px;
+    }
+
+    h1 {
+      font-family: 'DM Serif Display', serif;
+      font-weight: 400;
+      font-size: clamp(39px, 11vw, 48px);
+      line-height: 1.08;
+      letter-spacing: -1px;
+    }
+
+    h1 em {
+      display: inline-block;
+      color: #f06e83;
+      font-weight: 400;
+    }
+
+    .intro {
+      margin-top: 20px;
+      font-size: 13px;
+      line-height: 1.9;
+      color: #a16a49;
+      max-width: 300px;
+    }
+
+    .heart {
+      color: #a96b46;
+      margin-top: 10px;
+      font-size: 24px;
+    }
+
+    .gift-area {
+      width: 100%;
+      height: 300px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      margin: 5px 0 12px;
+    }
+
+    .glow {
+      position: absolute;
+      width: 230px;
+      height: 230px;
+      background: rgba(255, 173, 119, .28);
+      filter: blur(35px);
+      border-radius: 50%;
+    }
+
+    .gift {
+      position: relative;
+      font-size: 150px;
+      line-height: 1;
+      filter: drop-shadow(0 18px 15px rgba(129, 72, 36, .15));
+      user-select: none;
+      transform-origin: center;
+      animation: giftBounce 2.6s ease-in-out infinite;
+    }
+
+    @keyframes giftBounce {
+      0%, 100% { transform: translateY(0) rotate(0); }
+      50% { transform: translateY(-9px) rotate(2deg); }
+    }
+
+    .gift.opened {
+      animation: giftOpen .65s ease forwards;
+    }
+
+    @keyframes giftOpen {
+      0% { transform: scale(1) rotate(0); }
+      40% { transform: scale(1.17) rotate(-7deg); }
+      75% { transform: scale(.92) rotate(5deg); }
+      100% { transform: scale(1) rotate(0); }
+    }
+
+    .main-button {
+      width: 100%;
+      min-height: 58px;
+      border: none;
+      border-radius: 50px;
+      background: linear-gradient(135deg, #75452b, #9a603c);
+      color: #fff9e9;
+      font: 700 14px 'Poppins', sans-serif;
+      letter-spacing: .6px;
+      box-shadow: 0 10px 24px rgba(116, 69, 43, .23);
+      transition: transform .15s ease;
+    }
+
+    .main-button:active {
+      transform: scale(.97);
+    }
+
+    .tiny-note {
+      font-size: 12px;
+      color: #b17b57;
+      margin-top: 16px;
+    }
+
+    .reveal {
+      width: 100%;
+      display: none;
+      opacity: 0;
+      transform: translateY(12px);
+      margin-top: 22px;
+    }
+
+    .reveal.show {
+      display: block;
+      animation: revealIn .65s ease forwards;
+    }
+
+    @keyframes revealIn {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .message-card {
+      padding: 23px 19px;
+      border: 1px solid rgba(255,255,255,.95);
+      border-radius: 25px;
+      background: rgba(255,255,255,.56);
+      box-shadow: 0 12px 30px rgba(157, 105, 59, .09);
+    }
+
+    .message-card h2 {
+      font: 400 29px 'DM Serif Display', serif;
+      margin-bottom: 12px;
+      color: #815036;
+    }
+
+    .message-card p {
+      font-size: 13px;
+      line-height: 1.95;
+      color: #956746;
+    }
+
+    .wish-button {
+      width: 100%;
+      margin-top: 15px;
+      min-height: 53px;
+      border: 1px solid #f5b4a2;
+      border-radius: 17px;
+      background: rgba(255,255,255,.7);
+      color: #995a45;
+      font: 600 13px 'Poppins', sans-serif;
+    }
+
+    .wish-message {
+      display: none;
+      padding-top: 15px;
+      color: #d85f78;
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    .wish-message.show {
+      display: block;
+      animation: revealIn .5s ease forwards;
+    }
+
+    .footer {
+      margin-top: auto;
+      padding-top: 28px;
+      font-size: 10px;
+      letter-spacing: 2.5px;
+      color: #d77b75;
+    }
+
+    .footer span {
+      color: #f07882;
+      margin: 0 8px;
+    }
+
+    .confetti-piece {
+      position: fixed;
+      top: -15px;
+      z-index: 5;
+      pointer-events: none;
+      animation: fall 2.8s ease-in forwards;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(110svh) rotate(700deg);
+        opacity: 0;
+      }
+    }
+
+    @media (max-height: 740px) {
+      .page { padding-top: 18px; }
+      .label { margin-bottom: 18px; }
+      .gift-area { height: 240px; }
+      .gift { font-size: 125px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="page">
+    <div class="label">♡ YOUR SPECIAL GIFT ♡</div>
+
+    <h1>
+      you've been so<br>
+      <em>amazing ♡</em>
+    </h1>
+
+    <p class="intro">
+      You helped cut the cake, so now it's time<br>
+      to open your little gift...
+    </p>
+
+    <div class="heart">♡</div>
+
+    <section class="gift-area">
+      <div class="glow"></div>
+      <div class="gift" id="gift" aria-label="Wrapped birthday present">🎁</div>
+    </section>
+
+    <button class="main-button" id="openButton">
+      OPEN MY GIFT 🎁
+    </button>
+
+    <p class="tiny-note" id="tinyNote">(it's something special...)</p>
+
+    <section class="reveal" id="reveal" aria-live="polite">
+      <div class="message-card">
+        <h2>A little note for you 💌</h2>
+        <p>
+          Thank you for being YOU. ♡<br>
+          Thank you for the smiles, the memories,<br>
+          and all the little moments that matter.<br><br>
+          You deserve a day full of happiness,<br>
+          love, laughter, and all your favourite things.<br>
+          Never forget how special you are! 🥹💗
+        </p>
+
+        <button class="wish-button" id="wishButton">
+          🫙 Tap for one more little surprise
+        </button>
+
+        <p class="wish-message" id="wishMessage">
+          ✨ A tiny wish just for you ✨<br>
+          May something wonderful find its way<br>
+          into your life very, very soon! 💖
+        </p>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <span>♡</span> THANK YOU FOR BEING YOU <span>♡</span>
+    </footer>
+  </main>
+
+  <script>
+    const gift = document.getElementById('gift');
+    const openButton = document.getElementById('openButton');
+    const tinyNote = document.getElementById('tinyNote');
+    const reveal = document.getElementById('reveal');
+    const wishButton = document.getElementById('wishButton');
+    const wishMessage = document.getElementById('wishMessage');
+
+    let isOpened = false;
+    let wishIsOpened = false;
+
+    // Soft floating confetti in the background
+    const colors = ['#FFB347', '#FF6B6B', '#FFD93D'];
+
+    for (let i = 0; i < 25; i++) {
+      const dot = document.createElement('div');
+      dot.className = 'confetti';
+      dot.style.left = Math.random() * 100 + 'vw';
+      dot.style.top = Math.random() * 100 + 'svh';
+      dot.style.background = colors[i % colors.length];
+      dot.style.animationDelay = Math.random() * 4 + 's';
+      dot.style.animationDuration = (3 + Math.random() * 4) + 's';
+      document.body.appendChild(dot);
+    }
+
+    function celebrate() {
+      for (let i = 0; i < 60; i++) {
+        const piece = document.createElement('div');
+        piece.className = 'confetti-piece';
+        piece.textContent = Math.random() > 0.5 ? '✦' : '♥';
+        piece.style.left = Math.random() * 100 + 'vw';
+        piece.style.fontSize = (9 + Math.random() * 12) + 'px';
+        piece.style.color = colors[i % colors.length];
+        piece.style.animationDelay = Math.random() * 0.8 + 's';
+
+        document.body.appendChild(piece);
+        setTimeout(() => piece.remove(), 4000);
+      }
+
+      if (navigator.vibrate) navigator.vibrate(60);
+    }
+
+    openButton.addEventListener('click', () => {
+      if (isOpened) return;
+      isOpened = true;
+
+      gift.classList.add('opened');
+      openButton.textContent = 'YOUR LITTLE GIFT IS OPENED 💗';
+      tinyNote.textContent = 'a little happiness, wrapped just for you ♡';
+
+      reveal.classList.add('show');
+      celebrate();
+    });
+
+    wishButton.addEventListener('click', () => {
+      if (wishIsOpened) return;
+      wishIsOpened = true;
+
+      wishMessage.classList.add('show');
+      wishButton.textContent = 'YOUR LITTLE WISH IS HERE 💖';
+      celebrate();
+    });
+  </script>
+</body>
+</html>
