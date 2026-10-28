@@ -33,8 +33,25 @@
     .response, .note, .treaty-result { min-height: 28px; margin: 14px 0 0; color: #a35869; font-size: 13px; font-weight: 500; line-height: 1.8; }
     .apology-button { width: 100%; margin-top: 18px; border: 0; background: linear-gradient(120deg, #be7881, #d79b83); color: white; box-shadow: 0 8px 20px #bc79802d; }
     .note { padding: 15px 14px; border-radius: 16px; background: #f9e9e7; color: #79565a; text-align: left; }
-    .treaties { display: grid; gap: 9px; margin-top: 17px; }
-    .treaty { width: 100%; text-align: left; padding: 12px 14px; }
+    .wheel-area { margin-top: 18px; }
+    .wheel-shell { position: relative; width: min(100%, 330px); margin: 0 auto; }
+    .wheel-shell::before {
+      content: ""; position: absolute; z-index: 2; top: -7px; left: 50%;
+      width: 0; height: 0; transform: translateX(-50%);
+      border-left: 15px solid transparent; border-right: 15px solid transparent;
+      border-top: 27px solid #744f52; filter: drop-shadow(0 2px 2px #593e4033);
+    }
+    #spinWheel {
+      display: block; width: 100%; height: auto; border: 7px solid #fffdf7;
+      border-radius: 50%; box-shadow: 0 10px 25px #75515b22;
+      transform: rotate(0deg); transition: transform 4.2s cubic-bezier(.12,.72,.12,1);
+    }
+    .spin-button { width: 100%; min-height: 51px; margin-top: 18px; border: 0; border-radius: 15px;
+      background: linear-gradient(120deg, #be7881, #d79b83); color: white; font-weight: 700;
+      box-shadow: 0 8px 20px #bc79802d; }
+    .spin-button:disabled { cursor: wait; opacity: .75; }
+    .wheel-odds { margin: 10px 0 0 !important; color: #9c8080 !important; font-size: 11px !important; }
+    .wheel-result { min-height: 28px; margin: 14px 0 0; color: #a35869; font-size: 14px; font-weight: 600; line-height: 1.8; }
     .continue-link {
       display: block; margin-top: 24px; padding: 16px 20px;
       border-radius: 999px; background: linear-gradient(120deg, #be7881, #d79b83);
@@ -57,13 +74,13 @@
     <div class="eyebrow">A VERY IMPORTANT BIRTHDAY SIDE QUEST</div>
     <div class="heart" aria-hidden="true">💌</div>
     <h1 id="greeting">Hey, you…<br><em>I owe you one.</em></h1>
-    <p class="intro">Before the cake and birthday chaos, I have something to say to my favorite Taylor Swift enthusiast (and my favorite person to disagree with about music).</p>
+    <p class="intro">Before the cake and birthday chaos, I have something to say to my favorite Taylor Swift person (and my favorite person to disagree with about music).</p>
 
     <section class="panel" aria-labelledby="apologyTitle">
       <h2 id="apologyTitle">A proper apology ♡</h2>
-      <p>I'm sorry for annoying you too much with our Taylor Swift vs. Lana Del Rey debates. I get carried away because I love talking music with you—but I never want the teasing to stop being fun. You can call a timeout anytime, and I promise to listen. 💗</p>
+      <p>I'm sorry for annoying you too much about Taylor Swift . I get carried away because I love talking music with you—but I never want the teasing to stop being fun... 💗</p>
       <button class="apology-button" id="noteButton" type="button" aria-expanded="false">Open one more little note 💌</button>
-      <p class="note hidden" id="apologyNote" role="status">You don't have to pick my side, forgive me on the spot, or even talk music with me. I just wanted to say I'm sorry, I appreciate you, and I hope your birthday feels as special as you are. — your resident Lana defender 🌙</p>
+      <p class="note hidden" id="apologyNote" role="status">I Knoww im bit dumb sometimes but just to cure my boredom i annoy people for fun, but now i've reached peak nonchalant and now i knida don't talk much but always ready to listen to you, I appreciate you, and thanks for making my birthday really really special it just means alot to me you were always special to me -by lana ki boifrnd</p>
     </section>
 
     <section class="panel" aria-labelledby="artistTitle">
@@ -76,15 +93,17 @@
       <p class="response" id="artistResponse" role="status" aria-live="polite">Choose your champion to reveal the extremely unbiased results.</p>
     </section>
 
-    <section class="panel" aria-labelledby="truceTitle">
-      <h2 id="truceTitle">Choose our peace treaty 🕊️</h2>
-      <p>Pick the birthday truce that sounds best. No music debate required.</p>
-      <div class="treaties">
-        <button class="treaty" type="button" data-treaty="A no-skip playlist and zero arguing. 🎧" aria-pressed="false">🎧 A no-skip playlist and zero arguing</button>
-        <button class="treaty" type="button" data-treaty="You pick the music; I bring the birthday cake. 🍰" aria-pressed="false">🍰 You pick the music; I bring the cake</button>
-        <button class="treaty" type="button" data-treaty="A truce today, and friendly artist slander another time. 🤝" aria-pressed="false">🤝 Truce today; playful debates another time</button>
+    <section class="panel" aria-labelledby="wheelTitle">
+      <h2 id="wheelTitle">The birthday surprise wheel 🎡</h2>
+      <p>Spin once and see what birthday fate has picked for you!</p>
+      <div class="wheel-area">
+        <div class="wheel-shell">
+          <canvas id="spinWheel" width="360" height="360" role="img" aria-label="Four equal-sized wheel slices. Option one has a higher chance of being selected."></canvas>
+        </div>
+        <button class="spin-button" id="spinButton" type="button">SPIN THE WHEEL ✨</button>
+        <p class="wheel-odds">Equal-sized slices; option 1 has a 55% chance, and options 2–4 have 15% each. One spin only.</p>
+        <p class="wheel-result" id="wheelResult" role="status" aria-live="polite"></p>
       </div>
-      <p class="treaty-result" id="treatyResult" role="status" aria-live="polite"></p>
     </section>
 
     <a class="continue-link" href="video.html">Okay, let’s celebrate your birthday 🎂</a>
@@ -130,12 +149,106 @@
       if (opening) sprinkle(18);
     });
 
-    document.querySelectorAll('[data-treaty]').forEach(button => {
-      button.addEventListener('click', () => {
-        document.querySelectorAll('[data-treaty]').forEach(choice => choice.setAttribute('aria-pressed', String(choice === button)));
-        document.getElementById('treatyResult').textContent = button.dataset.treaty;
-        sprinkle(22);
+    const wheelCanvas = document.getElementById('spinWheel');
+    const wheelContext = wheelCanvas.getContext('2d');
+    const spinButton = document.getElementById('spinButton');
+    const wheelResult = document.getElementById('wheelResult');
+    const wheelOptions = [
+      { lines: ['GET A TREAT', 'FROM MY SIDE'], weight: 55, color: '#c87982', result: 'You won a treat from my side! 🍰' },
+      { lines: ['GIMME A DARE', 'TO COMPLETE'], weight: 15, color: '#b995c5', result: 'It’s dare time! Give me a dare to complete 😅' },
+      { lines: ['REVEAL MY', 'BIGGEST SECRET'], weight: 15, color: '#d7a45b', result: 'You picked it—ask me for my biggest secret 🤫' },
+      { lines: ['BAD LUCK', 'ONE'], weight: 15, color: '#8b9b83', result: 'Bad luck! No treat this spin—but you still get birthday love 💗' }
+    ];
+
+    function drawWheel() {
+      const center = wheelCanvas.width / 2;
+      const radius = center - 5;
+      let startAngle = -Math.PI / 2;
+      const slice = (Math.PI * 2) / wheelOptions.length;
+
+      wheelOptions.forEach(option => {
+        const endAngle = startAngle + slice;
+        const middleAngle = startAngle + slice / 2;
+
+        wheelContext.beginPath();
+        wheelContext.moveTo(center, center);
+        wheelContext.arc(center, center, radius, startAngle, endAngle);
+        wheelContext.closePath();
+        wheelContext.fillStyle = option.color;
+        wheelContext.fill();
+        wheelContext.strokeStyle = '#fffaf0';
+        wheelContext.lineWidth = 3;
+        wheelContext.stroke();
+
+        wheelContext.save();
+        wheelContext.translate(center, center);
+        wheelContext.rotate(middleAngle);
+        wheelContext.textAlign = 'center';
+        wheelContext.textBaseline = 'middle';
+        wheelContext.fillStyle = '#fffdf7';
+        wheelContext.font = '700 15px Poppins, sans-serif';
+        option.lines.forEach((line, index) => {
+          wheelContext.fillText(line, radius * 0.62, (index - (option.lines.length - 1) / 2) * 21, radius * 0.65);
+        });
+        wheelContext.restore();
+        startAngle = endAngle;
       });
+
+      wheelContext.beginPath();
+      wheelContext.arc(center, center, 23, 0, Math.PI * 2);
+      wheelContext.fillStyle = '#fffdf7';
+      wheelContext.fill();
+      wheelContext.strokeStyle = '#744f52';
+      wheelContext.lineWidth = 4;
+      wheelContext.stroke();
+    }
+
+    drawWheel();
+
+    const spinStorageKey = 'crushWheelAlreadySpun';
+    let spinAlreadyUsed = false;
+    try {
+      spinAlreadyUsed = sessionStorage.getItem(spinStorageKey) === 'true';
+    } catch (error) {
+      // The one-spin limit still applies until this page is reloaded.
+    }
+    if (spinAlreadyUsed) {
+      spinButton.disabled = true;
+      spinButton.textContent = 'YOUR ONE SPIN IS DONE ✨';
+      wheelResult.textContent = 'Your one spin has already been used. ♡';
+    }
+
+    spinButton.addEventListener('click', () => {
+      if (spinButton.disabled || spinAlreadyUsed) return;
+
+      spinAlreadyUsed = true;
+      spinButton.disabled = true;
+      try {
+        sessionStorage.setItem(spinStorageKey, 'true');
+      } catch (error) {
+        // The button remains locked for this page load if storage is unavailable.
+      }
+      wheelResult.textContent = 'Spinning… may the birthday luck be with us! ✨';
+
+      const totalWeight = wheelOptions.reduce((sum, option) => sum + option.weight, 0);
+      let pick = Math.random() * totalWeight;
+      let selectedIndex = wheelOptions.findIndex(option => (pick -= option.weight) < 0);
+      if (selectedIndex < 0) selectedIndex = wheelOptions.length - 1;
+
+      const selectedOption = wheelOptions[selectedIndex];
+      const sliceDegrees = 360 / wheelOptions.length;
+      const middleDegrees = -90 + (selectedIndex + 0.5) * sliceDegrees;
+      const targetDegrees = (360 - ((middleDegrees + 90) % 360)) % 360;
+      const currentRotation = Number(wheelCanvas.dataset.rotation || 0);
+      const finalRotation = currentRotation + 360 * 6 + targetDegrees - (currentRotation % 360);
+      wheelCanvas.dataset.rotation = String(finalRotation);
+      wheelCanvas.style.transform = `rotate(${finalRotation}deg)`;
+
+      window.setTimeout(() => {
+        wheelResult.textContent = selectedOption.result || `The wheel landed on option ${selectedIndex + 1}! ✨`;
+        spinButton.textContent = 'YOUR ONE SPIN IS DONE ✨';
+        sprinkle(22);
+      }, 4300);
     });
 
     function sprinkle(count) {
