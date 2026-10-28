@@ -4,88 +4,123 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Birthday Cake 🎂</title>
+  <meta name="theme-color" content="#fff9e9">
+  <title>A Little Birthday Surprise 🎂🎁</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
       -webkit-tap-highlight-color: transparent;
     }
 
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 20px;
+    }
+
     body {
-      min-height: 100svh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 24px 20px;
+      min-height: 100%;
       font-family: 'Poppins', sans-serif;
       color: #70452e;
-      text-align: center;
-      background: radial-gradient(circle at top, #fff9e9, #ffefc7 60%, #ffde9f);
+      background: radial-gradient(
+        circle at top,
+        #fff9e9 0%,
+        #ffefc7 55%,
+        #ffde9f 100%
+      );
+      overflow-x: hidden;
+    }
+
+    button {
+      font-family: 'Poppins', sans-serif;
+      cursor: pointer;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
     }
 
     .page {
       width: 100%;
-      max-width: 390px;
+      max-width: 430px;
+      margin: auto;
+      padding: 30px 22px 45px;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .sparkle {
+      position: absolute;
+      pointer-events: none;
+      color: #f6ad52;
+      font-size: 23px;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    .sparkle.one { top: 110px; left: 12px; }
+    .sparkle.two { top: 230px; right: 12px; animation-delay: 1s; }
+    .sparkle.three { top: 600px; left: 18px; animation-delay: .5s; }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(0); }
+      50% { transform: translateY(-10px) rotate(12deg); }
     }
 
     .label {
       display: inline-block;
       padding: 9px 15px;
-      margin-bottom: 22px;
-      border: 1px solid #f4c7a3;
+      border: 1px solid #f3c3a0;
       border-radius: 50px;
-      background: #ffffff88;
-      color: #bd7742;
+      background: #ffffff85;
+      color: #ad7046;
       font-size: 10px;
       font-weight: 700;
       letter-spacing: 2px;
+      margin: 8px 0 23px;
     }
 
     h1 {
-      font: 400 clamp(35px, 10vw, 45px)/1.15 'DM Serif Display', serif;
-      margin-bottom: 12px;
+      font: 400 clamp(37px, 10vw, 46px)/1.13 'DM Serif Display', serif;
+      color: #75482f;
     }
 
-    h1 span {
+    h1 em {
       color: #f07882;
-      font-style: italic;
+      font-weight: 400;
     }
 
     .subtitle {
+      margin-top: 14px;
       font-size: 13px;
-      line-height: 1.8;
+      line-height: 1.9;
       color: #96745a;
     }
 
     .cake-stage {
-      position: relative;
+      margin: 26px auto 20px;
+      min-height: 225px;
       display: flex;
       justify-content: center;
       align-items: center;
-      min-height: 230px;
-      margin: 25px 0 20px;
-      overflow: hidden;
-      border: 1px solid #ffffffcc;
       border-radius: 28px;
-      background: #ffffff70;
+      border: 1px solid #ffffffd9;
+      background: #ffffff69;
       box-shadow: 0 14px 35px #b1773717;
+      overflow: hidden;
     }
 
     .cake {
-      position: relative;
-      z-index: 1;
       font-size: 125px;
+      line-height: 1.2;
       user-select: none;
-      filter: drop-shadow(0 12px 10px #87522322);
+      filter: drop-shadow(0 12px 10px #87522320);
     }
 
     .cake.cut {
-      animation: cutCake .6s ease;
+      animation: cutCake .65s ease;
     }
 
     @keyframes cutCake {
@@ -94,69 +129,198 @@
       100% { transform: scale(1) rotate(0); }
     }
 
-    button {
-      display: block;
+    .primary-button {
       width: 100%;
       min-height: 55px;
       padding: 13px;
       border: none;
-      border-radius: 17px;
-      font: 600 13px 'Poppins', sans-serif;
-      cursor: pointer;
-      touch-action: manipulation;
-    }
-
-    #cutButton {
-      color: white;
+      border-radius: 18px;
       background: linear-gradient(135deg, #ff8e9e, #ffb347);
-      box-shadow: 0 9px 20px #f1837540;
+      color: white;
       font-size: 14px;
       font-weight: 700;
+      box-shadow: 0 9px 20px #f1837535;
     }
 
-    #cutButton:disabled {
-      opacity: .8;
+    .cake-message {
+      margin-top: 19px;
+      font-size: 13px;
+      line-height: 1.9;
+      color: #a36e4d;
     }
 
-    .wish {
-      margin-top: 17px;
+    .hidden {
+      display: none !important;
+    }
+
+    /* Scroll hint */
+    .scroll-hint {
+      margin: 28px 0 0;
+      padding: 19px 14px;
+      border: 1px dashed #e7ad7f;
+      border-radius: 20px;
+      background: #fff8e5c9;
+      animation: hintPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes hintPulse {
+      0%, 100% { box-shadow: 0 0 0 rgba(255,179,71,0); }
+      50% { box-shadow: 0 0 20px rgba(255,179,71,.2); }
+    }
+
+    .scroll-hint p {
       font-size: 13px;
       line-height: 1.8;
-      color: #a36e4d;
+      color: #946447;
     }
 
-    #status {
-      min-height: 26px;
-      margin-top: 10px;
-      font-size: 12px;
-      color: #a36e4d;
+    .scroll-hint strong {
+      color: #e27683;
     }
 
-    #nextButton {
-      display: none;
-      margin-top: 10px;
-      color: #855334;
-      background: #ffffffc9;
-      border: 1px solid #e8c6a5;
-    }
-
-    #nextButton.show {
+    .scroll-arrow {
       display: block;
+      margin-top: 7px;
+      color: #e27683;
+      font-size: 25px;
+      animation: arrowBounce 1s ease-in-out infinite;
+    }
+
+    @keyframes arrowBounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(6px); }
+    }
+
+    /* Gift section */
+    .gift-section {
+      margin-top: 65px;
+      padding-top: 28px;
+      border-top: 1px solid #e8c69f;
+      scroll-margin-top: 20px;
+    }
+
+    .gift-section h2 {
+      font: 400 38px/1.2 'DM Serif Display', serif;
+      color: #75482f;
+    }
+
+    .gift-section h2 em {
+      color: #f07882;
+    }
+
+    .gift-subtitle {
+      margin: 12px auto 0;
+      max-width: 300px;
+      color: #96745a;
+      font-size: 13px;
+      line-height: 1.9;
+    }
+
+    .gift-stage {
+      min-height: 245px;
+      margin: 25px 0 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 28px;
+      border: 1px solid #ffffffd9;
+      background: #ffffff70;
+      box-shadow: 0 14px 35px #b1773717;
+    }
+
+    .gift-emoji {
+      font-size: 135px;
+      filter: drop-shadow(0 14px 12px #87522320);
+      animation: giftFloat 2.5s ease-in-out infinite;
+    }
+
+    @keyframes giftFloat {
+      0%, 100% { transform: translateY(0) rotate(-2deg); }
+      50% { transform: translateY(-9px) rotate(2deg); }
+    }
+
+    .gift-emoji.opened {
+      animation: giftPop .65s ease;
+    }
+
+    @keyframes giftPop {
+      30% { transform: scale(1.15) rotate(-8deg); }
+      65% { transform: scale(.93) rotate(6deg); }
+      100% { transform: scale(1) rotate(0); }
+    }
+
+    .gift-button {
+      width: 100%;
+      min-height: 57px;
+      padding: 13px;
+      border: none;
+      border-radius: 50px;
+      background: linear-gradient(135deg, #75452b, #9a603c);
+      color: #fff9e9;
+      font-size: 14px;
+      font-weight: 700;
+      box-shadow: 0 10px 24px #75452b30;
+    }
+
+    .gift-message {
+      margin-top: 22px;
+      padding: 23px 18px;
+      border: 1px solid #ffffffec;
+      border-radius: 25px;
+      background: #ffffffa0;
+      box-shadow: 0 12px 30px #9d693b12;
+      animation: appear .6s ease;
+    }
+
+    @keyframes appear {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .gift-message h3 {
+      font: 400 29px 'DM Serif Display', serif;
+      color: #815036;
+      margin-bottom: 12px;
+    }
+
+    .gift-message p {
+      font-size: 13px;
+      line-height: 2;
+      color: #956746;
+    }
+
+    .wish-button {
+      margin-top: 16px;
+      width: 100%;
+      min-height: 52px;
+      border: 1px solid #f1b7a6;
+      border-radius: 16px;
+      background: #fff9ed;
+      color: #995a45;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .secret-wish {
+      margin-top: 16px;
+      color: #dc6d83;
+      font-size: 14px;
+      line-height: 1.9;
     }
 
     .footer {
-      margin-top: 20px;
+      margin-top: 45px;
+      color: #c77b70;
       font-size: 10px;
-      color: #b58d68;
-      letter-spacing: 1px;
+      letter-spacing: 2px;
     }
 
     .confetti {
       position: fixed;
       top: -15px;
-      z-index: 5;
+      z-index: 10;
       pointer-events: none;
-      animation: fall 2.5s ease-in forwards;
+      animation: fall 2.6s ease-in forwards;
     }
 
     @keyframes fall {
@@ -166,162 +330,200 @@
       }
     }
 
-    .transition {
-      position: fixed;
-      inset: 0;
-      z-index: 10;
-      display: none;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 25px;
-      background: #fff5df;
-    }
-
-    .transition.show {
-      display: flex;
-    }
-
-    .transition .emoji {
-      font-size: 65px;
-      animation: bounce 1s ease-in-out infinite alternate;
-    }
-
-    .transition h2 {
-      margin-top: 15px;
-      font: 400 32px 'DM Serif Display', serif;
-    }
-
-    .transition p {
-      margin-top: 10px;
-      font-size: 13px;
-      color: #a36e4d;
-    }
-
-    @keyframes bounce {
-      to { transform: translateY(-10px); }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+        scroll-behavior: auto !important;
+      }
     }
   </style>
 </head>
 
 <body>
   <main class="page">
-    <div class="label">♡ THE BIRTHDAY CONTINUES ♡</div>
+    <span class="sparkle one">✦</span>
+    <span class="sparkle two">♡</span>
+    <span class="sparkle three">✧</span>
 
-    <h1>Okayyy, let's<br><span>cut the cake!</span> 🎂</h1>
+    <!-- CAKE SECTION -->
+    <section id="cakeSection">
+      <div class="label">♡ THE BIRTHDAY CONTINUES ♡</div>
 
-    <p class="subtitle">
-      One little cake, a million sweet wishes,<br>
-      and a whole lot of love for you.
-    </p>
+      <h1>Okayyy, let's<br><em>cut the cake!</em> 🎂</h1>
 
-    <section class="cake-stage">
-      <div class="cake" id="cake">🎂</div>
+      <p class="subtitle">
+        One little cake, a million sweet wishes,<br>
+        and a whole lot of love for you.
+      </p>
+
+      <div class="cake-stage">
+        <div class="cake" id="cake">🎂</div>
+      </div>
+
+      <button class="primary-button" id="cutButton" type="button">
+        🔪 Tap here to cut the cake!
+      </button>
+
+      <p class="cake-message hidden" id="cakeMessage" aria-live="polite">
+        YAYYYY, CAKE CUTTING TIME!! 🥹💗<br>
+        May your day be filled with love, laughter &amp; happiness!
+      </p>
+
+      <div class="scroll-hint hidden" id="scrollHint">
+        <p>
+          Pssttt... 👀 <strong>THAT'S NOT ALL!</strong><br>
+          There's another little surprise waiting below.<br>
+          Scroll down to discover your gift! 🎁
+        </p>
+        <span class="scroll-arrow">↓</span>
+      </div>
     </section>
 
-    <button type="button" id="cutButton">
-      🔪 Tap here to cut the cake!
-    </button>
+    <!-- GIFT SECTION: SAME PAGE, NO REDIRECT -->
+    <section class="gift-section" id="giftSection">
+      <div class="label">♡ YOUR SPECIAL GIFT ♡</div>
 
-    <p class="wish" id="wish" hidden>
-      YAYYYY, CAKE CUTTING TIME!! 🥹💗<br>
-      May your day be filled with love and happiness!
-    </p>
+      <h2>You've been so<br><em>amazing ♡</em></h2>
 
-    <p id="status" aria-live="polite"></p>
+      <p class="gift-subtitle">
+        You cut the cake, and now it's time<br>
+        to open your little gift...
+      </p>
 
-    <button type="button" id="nextButton">
-      Not redirecting? Tap here to open your gift 🎁
-    </button>
+      <div class="gift-stage">
+        <div class="gift-emoji" id="giftEmoji">🎁</div>
+      </div>
 
-    <div class="footer">MADE WITH ♡ AND A LITTLE MAGIC</div>
+      <button class="gift-button" id="openGiftButton" type="button">
+        OPEN MY GIFT 🎁
+      </button>
+
+      <p class="gift-subtitle" id="giftHint">
+        (it's something special...)
+      </p>
+
+      <div class="gift-message hidden" id="giftMessage" aria-live="polite">
+        <h3>A little note for you 💌</h3>
+        <p>
+          Thank you for being YOU. ♡<br>
+          Thank you for the smiles, the memories,<br>
+          and all the little moments that matter.<br><br>
+          You deserve a day full of happiness,<br>
+          love, laughter, and all your favourite things.<br>
+          Never forget how special you are! 🥹💗
+        </p>
+
+        <button class="wish-button" id="wishButton" type="button">
+          🫙 Tap for one more little surprise
+        </button>
+
+        <p class="secret-wish hidden" id="secretWish">
+          ✨ A tiny wish just for you ✨<br>
+          May something wonderful find its way<br>
+          into your life very, very soon! 💖
+        </p>
+      </div>
+    </section>
+
+    <footer class="footer">♡ THANK YOU FOR BEING YOU ♡</footer>
   </main>
 
-  <div class="transition" id="transition">
-    <div class="emoji">🎁</div>
-    <h2>Your next surprise...</h2>
-    <p>Taking you to your little gift ♡</p>
-  </div>
-
   <script>
-    (() => {
-      const cake = document.getElementById('cake');
-      const cutButton = document.getElementById('cutButton');
-      const wish = document.getElementById('wish');
-      const status = document.getElementById('status');
-      const nextButton = document.getElementById('nextButton');
-      const transition = document.getElementById('transition');
+    const cake = document.getElementById('cake');
+    const cutButton = document.getElementById('cutButton');
+    const cakeMessage = document.getElementById('cakeMessage');
+    const scrollHint = document.getElementById('scrollHint');
 
-      let started = false;
-      let redirectTimer;
-      let countdownTimer;
+    const giftEmoji = document.getElementById('giftEmoji');
+    const openGiftButton = document.getElementById('openGiftButton');
+    const giftMessage = document.getElementById('giftMessage');
+    const giftHint = document.getElementById('giftHint');
 
-      // Resolve the next page relative to this page's actual URL.
-      const giftURL = new URL('gift.html', window.location.href).href;
+    const wishButton = document.getElementById('wishButton');
+    const secretWish = document.getElementById('secretWish');
 
-      function openGift() {
-        clearTimeout(redirectTimer);
-        clearInterval(countdownTimer);
+    let cakeCut = false;
+    let giftOpened = false;
+    let wishOpened = false;
 
-        status.textContent = 'Opening your surprise...';
-        transition.classList.add('show');
+    function confettiBurst() {
+      const colors = ['#FFB347', '#FF6B6B', '#FFD93D', '#FF8E9E', '#FFFFFF'];
 
-        // Navigate directly to gift.html.
-        window.location.href = giftURL;
+      for (let i = 0; i < 45; i++) {
+        const piece = document.createElement('div');
+        piece.className = 'confetti';
+        piece.textContent = Math.random() > 0.5 ? '✦' : '♥';
+        piece.style.left = Math.random() * 100 + 'vw';
+        piece.style.color = colors[Math.floor(Math.random() * colors.length)];
+        piece.style.fontSize = (10 + Math.random() * 12) + 'px';
+        piece.style.animationDelay = Math.random() * .6 + 's';
+
+        document.body.appendChild(piece);
+        setTimeout(() => piece.remove(), 3500);
       }
 
-      function celebrate() {
-        const colors = ['#FFB347', '#FF6B6B', '#FFD93D', '#FF8E9E'];
+      if (navigator.vibrate) navigator.vibrate(60);
+    }
 
-        for (let i = 0; i < 45; i++) {
-          const piece = document.createElement('div');
-          piece.className = 'confetti';
-          piece.textContent = Math.random() > 0.5 ? '✦' : '•';
-          piece.style.left = Math.random() * 100 + 'vw';
-          piece.style.color = colors[i % colors.length];
-          piece.style.fontSize = (10 + Math.random() * 12) + 'px';
-          piece.style.animationDelay = Math.random() * 0.7 + 's';
+    cutButton.addEventListener('click', () => {
+      if (cakeCut) return;
+      cakeCut = true;
 
-          document.body.appendChild(piece);
-          setTimeout(() => piece.remove(), 3500);
-        }
-      }
+      cake.classList.remove('cut');
+      void cake.offsetWidth;
+      cake.classList.add('cut');
 
-      cutButton.addEventListener('click', () => {
-        if (started) return;
-        started = true;
+      cutButton.textContent = '💗 Cake successfully cut!';
+      cutButton.disabled = true;
 
-        cake.classList.remove('cut');
-        void cake.offsetWidth;
-        cake.classList.add('cut');
+      cakeMessage.classList.remove('hidden');
+      scrollHint.classList.remove('hidden');
 
-        cutButton.disabled = true;
-        cutButton.textContent = '💗 Cake successfully cut!';
-        wish.hidden = false;
-        nextButton.classList.add('show');
+      confettiBurst();
 
-        celebrate();
+      // Make the new scroll hint easy to notice.
+      setTimeout(() => {
+        scrollHint.scrollIntoView({
+          behavior: 'smooth',
+          block: 'center'
+        });
+      }, 450);
+    });
 
-        let seconds = 4;
-        status.textContent = `Your gift opens in ${seconds} seconds...`;
+    openGiftButton.addEventListener('click', () => {
+      if (giftOpened) return;
+      giftOpened = true;
 
-        countdownTimer = setInterval(() => {
-          seconds--;
+      giftEmoji.classList.remove('opened');
+      void giftEmoji.offsetWidth;
+      giftEmoji.classList.add('opened');
 
-          if (seconds > 0) {
-            status.textContent = `Your gift opens in ${seconds} seconds...`;
-          } else {
-            clearInterval(countdownTimer);
-          }
-        }, 1000);
+      openGiftButton.textContent = 'YOUR LITTLE GIFT IS OPENED 💗';
+      openGiftButton.disabled = true;
+      giftHint.textContent = 'a little happiness, wrapped just for you ♡';
 
-        // Automatic redirect after the celebration.
-        redirectTimer = setTimeout(openGift, 4000);
-      });
+      giftMessage.classList.remove('hidden');
+      confettiBurst();
 
-      // Backup: the user can open the gift immediately.
-      nextButton.addEventListener('click', openGift);
-    })();
+      setTimeout(() => {
+        giftMessage.scrollIntoView({
+          behavior: 'smooth',
+          block: 'center'
+        });
+      }, 150);
+    });
+
+    wishButton.addEventListener('click', () => {
+      if (wishOpened) return;
+      wishOpened = true;
+
+      secretWish.classList.remove('hidden');
+      wishButton.textContent = 'YOUR LITTLE WISH IS HERE 💖';
+
+      confettiBurst();
+    });
   </script>
 </body>
 </html>
